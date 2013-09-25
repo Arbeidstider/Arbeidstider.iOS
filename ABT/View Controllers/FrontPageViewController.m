@@ -28,16 +28,10 @@
     return self;
 }
 
-
-
-
-
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"View did load");
+
     // MZDAYPICKER SETUP
     self.selectedLabel.font = [UIFont fontWithName:THIN size:12.0f];
     self.dayPicker.delegate = self;
@@ -54,35 +48,6 @@
     
     [self makeTopBar];
     
-    
-    /*
-    
-    NSMutableURLRequest *request3 = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://services.arbeidstider.no/TimeSheetService/GetAllTimeSheets"]];
-    [request3 setHTTPMethod:@"GET"];
-    [request3 addValue:@"1" forHTTPHeaderField:@"employerID"];
-    [request3 addValue:@"2013-09-13" forHTTPHeaderField:@"startDate"];
-    [request3 addValue:@"2013-09-15" forHTTPHeaderField:@"endDate"];
-    
-    
-    NSData *data = [NSURLConnection sendSynchronousRequest:request3 returningResponse:nil error:nil];
-    NSString *dataString3 = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    
-    NSLog(@" 3data %@", dataString3);
-    
-    */
-    
-//macgyverløsning
-    /*
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://services.arbeidstider.no/TimeSheetService/GetAllTimeSheets?employerID=%@&startDate=%@&endDate=%@",@"1",@"2013-09-13",@"2013-09-15"]]];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
-        [SingleTon Shifts].shifts = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-         NSLog(@"SingelTon:%@",[[SingleTon Shifts]shifts]);
-    
-    
-    }];*/
-    
-    
-    
     //Bra, stabil thirdpartyløsning
     self.params = [[NSMutableDictionary alloc]init];
     [self.params setObject:@"1" forKey:@"employerID"];
@@ -94,14 +59,14 @@
         NSError *error = nil;
         
         //NSJSONSerialization *response = [NSJSONSerialization JSONObjectWithData:result.data options:NSJSONReadingAllowFragments error:&error];
-        NSMutableArray *JSONArray = [NSJSONSerialization JSONObjectWithData:result.data options:kNilOptions error:&error];//her er json lagra
+        /*NSMutableArray *JSONArray = [NSJSONSerialization JSONObjectWithData:result.data options:kNilOptions error:&error];//her er json lagra
         [SingleTon Shifts].shifts = JSONArray;
         NSLog(@"Singleton workdates = %@",[SingleTon Shifts].shifts);
         
         for (NSDictionary *object in JSONArray) {
             NSString *string = [object objectForKey:@"ShiftEnd"];
             NSLog(@"%@",string);
-        }
+        }*/
         
         if(error)
             NSLog(@"Error: %@",error);
@@ -155,7 +120,7 @@
 
 - (void)dayPicker:(MZDayPicker *)dayPicker didSelectDay:(MZDay *)day
 {
-    NSLog(@"Did select day %@",day.day);
+    NSLog(@"Did select day %@",day.date);
 
     self.selectedLabel.text = [NSString stringWithFormat:@"Selected day: %@",day.date];
     

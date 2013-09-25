@@ -108,6 +108,10 @@
 {
     UIView* containingView = [[UIView alloc] initWithFrame:CGRectMake(self.footerHeight, 0, self.cellSize.width, self.cellSize.height)];
     
+    self.dayPickerColorDot = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
+    self.dayPickerColorDot.backgroundColor = [UIColor clearColor];
+    [containingView addSubview:self.dayPickerColorDot];
+    
     self.dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.cellSize.width, self.cellSize.height)];
     self.dayLabel.center = CGPointMake(containingView.frame.size.width/2, self.cellSize.height/2.6);
     self.dayLabel.textAlignment = NSTextAlignmentCenter;

@@ -577,11 +577,22 @@ static BOOL NSRangeContainsRow (NSRange range, NSInteger row) {
     }
     
     MZDay *day = self.tableDaysData[indexPath.row];
+   // NSLog(@"day.date = %@",day.date);
+   // NSLog(@"today.date= %@",[NSDate date]);
+   // NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+   // [formatter setDateFormat:@"dd.MM.yyyy"];
+   // if ([[formatter stringFromDate:day.date] isEqualToString:[formatter stringFromDate:[NSDate date]]]) {
+   //
+   //     MZDayPickerCell*mzCell = (MZDayPickerCell*)[self cellForDay:day];
+   //     mzCell.dayPickerColorDot.backgroundColor = [UIColor redColor];
+   //NSLog(@"samedate");
+   //}
     
     // Bug: I can't use default UITableView select row, because in some case, row's didn't selected
     // I Handled it by tap gesture recognizer
-    [cell setUserInteractionEnabled:NO];
     
+    [cell setUserInteractionEnabled:NO];
+    //cell.dayPickerColorDot.backgroundColor = [UIColor redColor];
     cell.dayLabel.textColor = self.activeDayNameColor;
     cell.dayLabel.font = [cell.dayLabel.font fontWithSize:self.dayLabelFontSize];
     cell.dayNameLabel.font = [cell.dayNameLabel.font fontWithSize:self.dayNameLabelFontSize];

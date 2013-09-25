@@ -101,7 +101,7 @@
     NSString *timeStamp = [dateFormatter stringFromDate:[NSDate date]];
     */
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    NSLog(@"index: %@",[calendarView.collectionView cellForItemAtIndexPath:indexPath]);
+    //NSLog(@"index: %@",[calendarView.collectionView cellForItemAtIndexPath:indexPath]);
     [calendarView addDotWithColor:[UIColor blackColor] atIndexPath:indexPath];
     [dateFormat setDateFormat:@"dd-MM-yyyy"];
     NSString *dateString = [dateFormat stringFromDate:date];

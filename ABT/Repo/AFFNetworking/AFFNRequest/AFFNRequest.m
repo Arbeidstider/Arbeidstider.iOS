@@ -274,7 +274,6 @@ static NSString *__AFFNKeyFinished = @"isFinished";
     }
 
     finalURL = [[NSURL alloc] initWithString:paramsString];
-    NSLog(@"FinalURL:%@",finalURL);
     [paramsString release];
     paramsString = nil;
     

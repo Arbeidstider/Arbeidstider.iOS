@@ -132,7 +132,6 @@
  * Cell for MZDay object
  */
 - (MZDayPickerCell *)cellForDay:(MZDay *)day;
-
 @end
 
 @interface NSDate (Additional)

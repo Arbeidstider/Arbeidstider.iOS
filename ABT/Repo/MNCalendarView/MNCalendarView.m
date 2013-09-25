@@ -67,7 +67,6 @@
 -(void)addDotWithColor:(UIColor *)color atIndexPath:(NSIndexPath *)indexPath{
     MNCalendarViewDayCell *cell = (MNCalendarViewDayCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     cell.dotView.backgroundColor = color;
-    NSLog(@"%@",indexPath);
 }
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
@@ -305,10 +304,7 @@
 //Her fucker jeg rundt
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
-    NSString *todayString = [[NSString alloc]initWithFormat:@"%@",[formatter stringFromDate:cell.date]];
-   
-    NSLog(@"celldate:%@",todayString);
-    
+    //NSString *todayString = [[NSString alloc]initWithFormat:@"%@",[formatter stringFromDate:cell.date]];
     for (NSDictionary *dictionary in [SingleTon Shifts].shifts) {
         NSString *shiftStart = [dictionary objectForKey:@"ShiftStart"];
         /*NSString *date = [[NSString alloc]initWithFormat:@"%@.%@.%@",
@@ -320,11 +316,11 @@
               [shiftStart substringWithRange:NSMakeRange(0, 2)],
               [shiftStart substringWithRange:NSMakeRange(3, 2)],
               [shiftStart substringWithRange:NSMakeRange(6, 4)]] isEqualToString:[formatter stringFromDate:cell.date]]) {
-            NSLog(@"EQUAL DATES %@ ===_=== %@",[NSString stringWithFormat:@"%@.%@.%@",
+            /*NSLog(@"EQUAL DATES %@ ===_=== %@",[NSString stringWithFormat:@"%@.%@.%@",
                                           [shiftStart substringWithRange:NSMakeRange(0, 2)],
                                           [shiftStart substringWithRange:NSMakeRange(3, 2)],
                                           [shiftStart substringWithRange:NSMakeRange(6, 4)]],
-                  [formatter stringFromDate:cell.date]);
+                  [formatter stringFromDate:cell.date]);*/
             [self addDotWithColor:[UIColor blackColor] atIndexPath:indexPath];
         }
     }

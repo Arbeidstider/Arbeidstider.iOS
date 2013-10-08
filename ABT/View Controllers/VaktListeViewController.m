@@ -12,6 +12,7 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "MJDetailViewController.h"
 #import "AwesomeMenu.h"
+#import "DayDetailViewController.h"
 @interface VaktListeViewController () <MNCalendarViewDelegate>
 @property (nonatomic,strong) NSDateFormatter *dateFormatter;
 @property (nonatomic,weak) UIImageView *infoImage;
@@ -54,10 +55,11 @@
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
     headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
     UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"Dine vakter";
+    titleLabel.text = @"Vaktliste";
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.frame = CGRectMake(121, 14, 100 , 21);
-    titleLabel.font = [UIFont fontWithName:THIN size:20.0f];
+    titleLabel.frame = CGRectMake(0, 0, self.view.bounds.size.width, HEADER_HEIGHT);
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE];
     [headerView addSubview:titleLabel];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self
@@ -65,21 +67,19 @@
      forControlEvents:UIControlEventTouchUpInside];
     [button setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     button.frame = CGRectMake(5.0, 5.0, 40.0, 40.0);
-    [headerView addSubview:button];
     
+    [headerView addSubview:button];
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [infoButton addTarget:self
-               action:@selector(infoPressed)
-     forControlEvents:UIControlEventTouchUpInside];
+                   action:@selector(infoPressed)
+         forControlEvents:UIControlEventTouchUpInside];
     [infoButton setImage:[UIImage imageNamed:@"infoIcon.png"] forState:UIControlStateNormal];
     infoButton.frame = CGRectMake(270.0, 5.0, 45.0, 40.0);
     [headerView addSubview:infoButton];
-    
-    
     [self.view addSubview:headerView];
-    
 }
 -(void)infoPressed{
+    
     [self presentPopupViewController:self.detailView animationType:MJPopupViewAnimationFade];
     
 }
@@ -93,6 +93,9 @@
 }
 - (void)calendarView:(MNCalendarView *)calendarView didSelectDate:(NSDate *)date atIndex:(NSIndexPath *)indexPath{
     
+    [SingleTon Shifts].currentDate = date;
+    //[[SingleTon Views].SideView changeCenterPanel:@"DayDetail"];
+    [self presentPopupViewController:[[DayDetailViewController alloc]init] animationType:MJPopupViewAnimationSlideBottomTop];
     /*NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm";
     
@@ -108,7 +111,9 @@
     NSLog(@"Selected date: %@",dateString);
 
 }
-
+-(void)dismissPopup{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
+}
 
 
 @end

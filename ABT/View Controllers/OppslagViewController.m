@@ -40,9 +40,11 @@
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
     headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
     UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"Oppslag";
+    titleLabel.text = @"Personer";
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.frame = CGRectMake(110, 5, 160, 30);
+    titleLabel.frame = CGRectMake(0, 0, self.view.bounds.size.width, HEADER_HEIGHT);
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE];
     [headerView addSubview:titleLabel];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self
@@ -50,6 +52,7 @@
      forControlEvents:UIControlEventTouchUpInside];
     [button setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     button.frame = CGRectMake(5.0, 5.0, 40.0, 40.0);
+    
     [headerView addSubview:button];
     [self.view addSubview:headerView];
     

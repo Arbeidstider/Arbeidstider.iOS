@@ -307,23 +307,24 @@
     //NSString *todayString = [[NSString alloc]initWithFormat:@"%@",[formatter stringFromDate:cell.date]];
     for (NSDictionary *dictionary in [SingleTon Shifts].shifts) {
         NSString *shiftStart = [dictionary objectForKey:@"ShiftStart"];
+        shiftStart = shiftStart;
         /*NSString *date = [[NSString alloc]initWithFormat:@"%@.%@.%@",
                           [shiftStart substringWithRange:NSMakeRange(0, 2)],
                           [shiftStart substringWithRange:NSMakeRange(3, 2)],
                           [shiftStart substringWithRange:NSMakeRange(6, 4)]
                           ];*/
-        if ([[NSString stringWithFormat:@"%@.%@.%@",
+       /* if ([[NSString stringWithFormat:@"%@.%@.%@",
               [shiftStart substringWithRange:NSMakeRange(0, 2)],
               [shiftStart substringWithRange:NSMakeRange(3, 2)],
               [shiftStart substringWithRange:NSMakeRange(6, 4)]] isEqualToString:[formatter stringFromDate:cell.date]]) {
-            /*NSLog(@"EQUAL DATES %@ ===_=== %@",[NSString stringWithFormat:@"%@.%@.%@",
+            NSLog(@"EQUAL DATES %@ ===_=== %@",[NSString stringWithFormat:@"%@.%@.%@",
                                           [shiftStart substringWithRange:NSMakeRange(0, 2)],
                                           [shiftStart substringWithRange:NSMakeRange(3, 2)],
                                           [shiftStart substringWithRange:NSMakeRange(6, 4)]],
-                  [formatter stringFromDate:cell.date]);*/
-            [self addDotWithColor:[UIColor blackColor] atIndexPath:indexPath];
+                  [formatter stringFromDate:cell.date]);
+            [self addDotWithColor:[UIColor blackColor] atIndexPath:indexPath];}*/
         }
-    }
+    
     
     
     

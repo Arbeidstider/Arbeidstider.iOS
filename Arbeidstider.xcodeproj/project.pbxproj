@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0805E04317FB185000B464D6 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03617FB185000B464D6 /* Icon-120.png */; };
+		0805E04417FB185000B464D6 /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03717FB185000B464D6 /* Icon-144.png */; };
+		0805E04517FB185000B464D6 /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03817FB185000B464D6 /* Icon-152.png */; };
+		0805E04617FB185000B464D6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03917FB185000B464D6 /* Icon-72.png */; };
+		0805E04717FB185000B464D6 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03A17FB185000B464D6 /* Icon-76.png */; };
+		0805E04817FB185000B464D6 /* Icon-Med-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03B17FB185000B464D6 /* Icon-Med-40.png */; };
+		0805E04917FB185000B464D6 /* Icon-Med-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03C17FB185000B464D6 /* Icon-Med-40@2x.png */; };
+		0805E04A17FB185000B464D6 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03D17FB185000B464D6 /* Icon-Small-50.png */; };
+		0805E04B17FB185000B464D6 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03E17FB185000B464D6 /* Icon-Small-50@2x.png */; };
+		0805E04C17FB185000B464D6 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E03F17FB185000B464D6 /* Icon-Small.png */; };
+		0805E04D17FB185000B464D6 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E04017FB185000B464D6 /* Icon-Small@2x.png */; };
+		0805E04E17FB185000B464D6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E04117FB185000B464D6 /* Icon.png */; };
+		0805E04F17FB185000B464D6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E04217FB185000B464D6 /* Icon@2x.png */; };
+		0805E05217FC199300B464D6 /* DayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0805E05117FC199300B464D6 /* DayDetailViewController.m */; };
+		0805E05417FCD55E00B464D6 /* infoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E05317FCD55E00B464D6 /* infoIcon.png */; };
+		084AA97A17FD85DD00FD3B5A /* ABTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 084AA97917FD85DD00FD3B5A /* ABTPerson.m */; };
+		084AA97E17FD943F00FD3B5A /* json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 084AA97D17FD943F00FD3B5A /* json.txt */; };
+		084AA98017FDA5B800FD3B5A /* doneIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 084AA97F17FDA5B800FD3B5A /* doneIcon.png */; };
 		086B552617F0960900D9CC67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B552517F0960900D9CC67 /* Foundation.framework */; };
 		086B552817F0960900D9CC67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B552717F0960900D9CC67 /* CoreGraphics.framework */; };
 		086B552A17F0960900D9CC67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B552917F0960900D9CC67 /* UIKit.framework */; };
@@ -60,8 +78,6 @@
 		086B55E517F0AA2100D9CC67 /* menuItemOrange.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55B217F0AA2100D9CC67 /* menuItemOrange.png */; };
 		086B55E617F0AA2100D9CC67 /* menuItemPurp.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55B317F0AA2100D9CC67 /* menuItemPurp.png */; };
 		086B55E717F0AA2100D9CC67 /* menuItemRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55B417F0AA2100D9CC67 /* menuItemRed.png */; };
-		086B55E817F0AA2100D9CC67 /* helvetica-neue-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 086B55B617F0AA2100D9CC67 /* helvetica-neue-light.ttf */; };
-		086B55E917F0AA2100D9CC67 /* helvetica-neue-thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 086B55B717F0AA2100D9CC67 /* helvetica-neue-thin.ttf */; };
 		086B55EA17F0AA2100D9CC67 /* frontpage.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55B917F0AA2100D9CC67 /* frontpage.png */; };
 		086B55EB17F0AA2100D9CC67 /* innstillinger.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55BA17F0AA2100D9CC67 /* innstillinger.png */; };
 		086B55EC17F0AA2100D9CC67 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55BB17F0AA2100D9CC67 /* menu.png */; };
@@ -84,22 +100,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		086B552217F0960900D9CC67 /* ABT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0805E03617FB185000B464D6 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		0805E03717FB185000B464D6 /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
+		0805E03817FB185000B464D6 /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
+		0805E03917FB185000B464D6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		0805E03A17FB185000B464D6 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		0805E03B17FB185000B464D6 /* Icon-Med-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Med-40.png"; sourceTree = "<group>"; };
+		0805E03C17FB185000B464D6 /* Icon-Med-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Med-40@2x.png"; sourceTree = "<group>"; };
+		0805E03D17FB185000B464D6 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		0805E03E17FB185000B464D6 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		0805E03F17FB185000B464D6 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		0805E04017FB185000B464D6 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		0805E04117FB185000B464D6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		0805E04217FB185000B464D6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		0805E05017FC199300B464D6 /* DayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayDetailViewController.h; sourceTree = "<group>"; };
+		0805E05117FC199300B464D6 /* DayDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayDetailViewController.m; sourceTree = "<group>"; };
+		0805E05317FCD55E00B464D6 /* infoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoIcon.png; sourceTree = "<group>"; };
+		084AA97817FD85DD00FD3B5A /* ABTPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTPerson.h; sourceTree = "<group>"; };
+		084AA97917FD85DD00FD3B5A /* ABTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTPerson.m; sourceTree = "<group>"; };
+		084AA97D17FD943F00FD3B5A /* json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.txt; sourceTree = "<group>"; };
+		084AA97F17FDA5B800FD3B5A /* doneIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneIcon.png; sourceTree = "<group>"; };
+		086B552217F0960900D9CC67 /* Arbeidstider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arbeidstider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		086B552517F0960900D9CC67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		086B552717F0960900D9CC67 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		086B552917F0960900D9CC67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		086B552D17F0960900D9CC67 /* ABT-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ABT-Info.plist"; sourceTree = "<group>"; };
+		086B552D17F0960900D9CC67 /* Arbeidstider-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Arbeidstider-Info.plist"; sourceTree = "<group>"; };
 		086B552F17F0960900D9CC67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		086B553117F0960900D9CC67 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		086B553317F0960900D9CC67 /* ABT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ABT-Prefix.pch"; sourceTree = "<group>"; };
+		086B553317F0960900D9CC67 /* Arbeidstider-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Arbeidstider-Prefix.pch"; sourceTree = "<group>"; };
 		086B553417F0960900D9CC67 /* ABTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABTAppDelegate.h; sourceTree = "<group>"; };
 		086B553517F0960900D9CC67 /* ABTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABTAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		086B553817F0960900D9CC67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		086B553B17F0960900D9CC67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		086B554017F0960900D9CC67 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		086B554617F0960A00D9CC67 /* ABTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		086B554617F0960A00D9CC67 /* ArbeidstiderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArbeidstiderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		086B554717F0960A00D9CC67 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		086B554F17F0960A00D9CC67 /* ABTTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ABTTests-Info.plist"; sourceTree = "<group>"; };
+		086B554F17F0960A00D9CC67 /* ArbeidstiderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ArbeidstiderTests-Info.plist"; sourceTree = "<group>"; };
 		086B555117F0960A00D9CC67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		086B555317F0960A00D9CC67 /* ABTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABTTests.m; sourceTree = "<group>"; };
 		086B555E17F0AA2100D9CC67 /* FrontPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageViewController.h; sourceTree = "<group>"; };
@@ -173,8 +209,6 @@
 		086B55B217F0AA2100D9CC67 /* menuItemOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuItemOrange.png; sourceTree = "<group>"; };
 		086B55B317F0AA2100D9CC67 /* menuItemPurp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuItemPurp.png; sourceTree = "<group>"; };
 		086B55B417F0AA2100D9CC67 /* menuItemRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuItemRed.png; sourceTree = "<group>"; };
-		086B55B617F0AA2100D9CC67 /* helvetica-neue-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "helvetica-neue-light.ttf"; sourceTree = "<group>"; };
-		086B55B717F0AA2100D9CC67 /* helvetica-neue-thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "helvetica-neue-thin.ttf"; sourceTree = "<group>"; };
 		086B55B917F0AA2100D9CC67 /* frontpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frontpage.png; sourceTree = "<group>"; };
 		086B55BA17F0AA2100D9CC67 /* innstillinger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = innstillinger.png; sourceTree = "<group>"; };
 		086B55BB17F0AA2100D9CC67 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
@@ -212,6 +246,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0805E03517FB185000B464D6 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				0805E03617FB185000B464D6 /* Icon-120.png */,
+				0805E03717FB185000B464D6 /* Icon-144.png */,
+				0805E03817FB185000B464D6 /* Icon-152.png */,
+				0805E03917FB185000B464D6 /* Icon-72.png */,
+				0805E03A17FB185000B464D6 /* Icon-76.png */,
+				0805E03B17FB185000B464D6 /* Icon-Med-40.png */,
+				0805E03C17FB185000B464D6 /* Icon-Med-40@2x.png */,
+				0805E03D17FB185000B464D6 /* Icon-Small-50.png */,
+				0805E03E17FB185000B464D6 /* Icon-Small-50@2x.png */,
+				0805E03F17FB185000B464D6 /* Icon-Small.png */,
+				0805E04017FB185000B464D6 /* Icon-Small@2x.png */,
+				0805E04117FB185000B464D6 /* Icon.png */,
+				0805E04217FB185000B464D6 /* Icon@2x.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		086B551917F0960900D9CC67 = {
 			isa = PBXGroup;
 			children = (
@@ -225,8 +279,8 @@
 		086B552317F0960900D9CC67 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				086B552217F0960900D9CC67 /* ABT.app */,
-				086B554617F0960A00D9CC67 /* ABTTests.xctest */,
+				086B552217F0960900D9CC67 /* Arbeidstider.app */,
+				086B554617F0960A00D9CC67 /* ArbeidstiderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -262,10 +316,10 @@
 			children = (
 				086B553417F0960900D9CC67 /* ABTAppDelegate.h */,
 				086B553517F0960900D9CC67 /* ABTAppDelegate.m */,
-				086B552D17F0960900D9CC67 /* ABT-Info.plist */,
+				086B552D17F0960900D9CC67 /* Arbeidstider-Info.plist */,
 				086B552E17F0960900D9CC67 /* InfoPlist.strings */,
 				086B553117F0960900D9CC67 /* main.m */,
-				086B553317F0960900D9CC67 /* ABT-Prefix.pch */,
+				086B553317F0960900D9CC67 /* Arbeidstider-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -282,7 +336,7 @@
 		086B554E17F0960A00D9CC67 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				086B554F17F0960A00D9CC67 /* ABTTests-Info.plist */,
+				086B554F17F0960A00D9CC67 /* ArbeidstiderTests-Info.plist */,
 				086B555017F0960A00D9CC67 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -305,6 +359,8 @@
 				086B556B17F0AA2100D9CC67 /* SidePanelViewController.m */,
 				086B556C17F0AA2100D9CC67 /* VaktListeViewController.h */,
 				086B556D17F0AA2100D9CC67 /* VaktListeViewController.m */,
+				0805E05017FC199300B464D6 /* DayDetailViewController.h */,
+				0805E05117FC199300B464D6 /* DayDetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -314,6 +370,8 @@
 			children = (
 				086B55F217F0AB4100D9CC67 /* SingleTon.h */,
 				086B55F317F0AB4100D9CC67 /* SingleTon.m */,
+				084AA97817FD85DD00FD3B5A /* ABTPerson.h */,
+				084AA97917FD85DD00FD3B5A /* ABTPerson.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -458,6 +516,8 @@
 		086B55AC17F0AA2100D9CC67 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				084AA97D17FD943F00FD3B5A /* json.txt */,
+				0805E03517FB185000B464D6 /* Icons */,
 				086B55AD17F0AA2100D9CC67 /* AwesomeMenuItems */,
 				086B55B517F0AA2100D9CC67 /* Fonts */,
 				086B55B817F0AA2100D9CC67 /* MenuIcons */,
@@ -482,8 +542,6 @@
 		086B55B517F0AA2100D9CC67 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				086B55B617F0AA2100D9CC67 /* helvetica-neue-light.ttf */,
-				086B55B717F0AA2100D9CC67 /* helvetica-neue-thin.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -491,6 +549,8 @@
 		086B55B817F0AA2100D9CC67 /* MenuIcons */ = {
 			isa = PBXGroup;
 			children = (
+				084AA97F17FDA5B800FD3B5A /* doneIcon.png */,
+				0805E05317FCD55E00B464D6 /* infoIcon.png */,
 				086B55B917F0AA2100D9CC67 /* frontpage.png */,
 				086B55BA17F0AA2100D9CC67 /* innstillinger.png */,
 				086B55BB17F0AA2100D9CC67 /* menu.png */,
@@ -514,9 +574,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		086B552117F0960900D9CC67 /* ABT */ = {
+		086B552117F0960900D9CC67 /* Arbeidstider */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 086B555717F0960A00D9CC67 /* Build configuration list for PBXNativeTarget "ABT" */;
+			buildConfigurationList = 086B555717F0960A00D9CC67 /* Build configuration list for PBXNativeTarget "Arbeidstider" */;
 			buildPhases = (
 				086B551E17F0960900D9CC67 /* Sources */,
 				086B551F17F0960900D9CC67 /* Frameworks */,
@@ -526,14 +586,14 @@
 			);
 			dependencies = (
 			);
-			name = ABT;
+			name = Arbeidstider;
 			productName = ABT;
-			productReference = 086B552217F0960900D9CC67 /* ABT.app */;
+			productReference = 086B552217F0960900D9CC67 /* Arbeidstider.app */;
 			productType = "com.apple.product-type.application";
 		};
-		086B554517F0960A00D9CC67 /* ABTTests */ = {
+		086B554517F0960A00D9CC67 /* ArbeidstiderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 086B555A17F0960A00D9CC67 /* Build configuration list for PBXNativeTarget "ABTTests" */;
+			buildConfigurationList = 086B555A17F0960A00D9CC67 /* Build configuration list for PBXNativeTarget "ArbeidstiderTests" */;
 			buildPhases = (
 				086B554217F0960A00D9CC67 /* Sources */,
 				086B554317F0960A00D9CC67 /* Frameworks */,
@@ -544,9 +604,9 @@
 			dependencies = (
 				086B554C17F0960A00D9CC67 /* PBXTargetDependency */,
 			);
-			name = ABTTests;
+			name = ArbeidstiderTests;
 			productName = ABTTests;
-			productReference = 086B554617F0960A00D9CC67 /* ABTTests.xctest */;
+			productReference = 086B554617F0960A00D9CC67 /* ArbeidstiderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -564,7 +624,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 086B551D17F0960900D9CC67 /* Build configuration list for PBXProject "ABT" */;
+			buildConfigurationList = 086B551D17F0960900D9CC67 /* Build configuration list for PBXProject "Arbeidstider" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -577,8 +637,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				086B552117F0960900D9CC67 /* ABT */,
-				086B554517F0960A00D9CC67 /* ABTTests */,
+				086B552117F0960900D9CC67 /* Arbeidstider */,
+				086B554517F0960A00D9CC67 /* ArbeidstiderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -589,24 +649,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				086B55EE17F0AA2100D9CC67 /* penger.png in Resources */,
+				0805E04717FB185000B464D6 /* Icon-76.png in Resources */,
+				0805E04817FB185000B464D6 /* Icon-Med-40.png in Resources */,
+				0805E04A17FB185000B464D6 /* Icon-Small-50.png in Resources */,
+				0805E04617FB185000B464D6 /* Icon-72.png in Resources */,
+				0805E04C17FB185000B464D6 /* Icon-Small.png in Resources */,
 				086B55ED17F0AA2100D9CC67 /* oppslag.png in Resources */,
 				086B55E117F0AA2100D9CC67 /* coloredDots.png in Resources */,
 				086B55F017F0AA2100D9CC67 /* vakter.png in Resources */,
 				086B55E717F0AA2100D9CC67 /* menuItemRed.png in Resources */,
 				086B55EC17F0AA2100D9CC67 /* menu.png in Resources */,
 				086B55EF17F0AA2100D9CC67 /* personer.png in Resources */,
+				0805E05417FCD55E00B464D6 /* infoIcon.png in Resources */,
 				086B55E217F0AA2100D9CC67 /* menuItemBlue.png in Resources */,
+				0805E04F17FB185000B464D6 /* Icon@2x.png in Resources */,
+				0805E04B17FB185000B464D6 /* Icon-Small-50@2x.png in Resources */,
 				086B553C17F0960900D9CC67 /* Main_iPad.storyboard in Resources */,
+				0805E04917FB185000B464D6 /* Icon-Med-40@2x.png in Resources */,
 				086B55E617F0AA2100D9CC67 /* menuItemPurp.png in Resources */,
 				086B55EA17F0AA2100D9CC67 /* frontpage.png in Resources */,
 				086B55EB17F0AA2100D9CC67 /* innstillinger.png in Resources */,
+				0805E04317FB185000B464D6 /* Icon-120.png in Resources */,
+				0805E04517FB185000B464D6 /* Icon-152.png in Resources */,
 				086B55E317F0AA2100D9CC67 /* menuItemFrame.png in Resources */,
-				086B55E917F0AA2100D9CC67 /* helvetica-neue-thin.ttf in Resources */,
+				084AA98017FDA5B800FD3B5A /* doneIcon.png in Resources */,
 				086B55D317F0AA2100D9CC67 /* MJDetailViewController.xib in Resources */,
 				086B55E417F0AA2100D9CC67 /* menuItemGreen.png in Resources */,
+				084AA97E17FD943F00FD3B5A /* json.txt in Resources */,
 				086B554117F0960900D9CC67 /* Images.xcassets in Resources */,
 				086B553917F0960900D9CC67 /* Main_iPhone.storyboard in Resources */,
-				086B55E817F0AA2100D9CC67 /* helvetica-neue-light.ttf in Resources */,
+				0805E04417FB185000B464D6 /* Icon-144.png in Resources */,
+				0805E04D17FB185000B464D6 /* Icon-Small@2x.png in Resources */,
+				0805E04E17FB185000B464D6 /* Icon.png in Resources */,
 				086B553017F0960900D9CC67 /* InfoPlist.strings in Resources */,
 				086B55E517F0AA2100D9CC67 /* menuItemOrange.png in Resources */,
 			);
@@ -627,6 +701,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0805E05217FC199300B464D6 /* DayDetailViewController.m in Sources */,
 				086B55DC17F0AA2100D9CC67 /* MNFastDateEnumeration.m in Sources */,
 				086B55C617F0AA2100D9CC67 /* SidePanelViewController.m in Sources */,
 				086B55C417F0AA2100D9CC67 /* OppslagViewController.m in Sources */,
@@ -638,6 +713,7 @@
 				086B55DE17F0AA2100D9CC67 /* MZDay.m in Sources */,
 				086B55C917F0AA2100D9CC67 /* AFFNImageManager.m in Sources */,
 				086B55D117F0AA2100D9CC67 /* UIViewController+JASidePanel.m in Sources */,
+				084AA97A17FD85DD00FD3B5A /* ABTPerson.m in Sources */,
 				086B55CB17F0AA2100D9CC67 /* AFFNManager.m in Sources */,
 				086B55DB17F0AA2100D9CC67 /* MNCalendarViewWeekdayCell.m in Sources */,
 				086B55C717F0AA2100D9CC67 /* VaktListeViewController.m in Sources */,
@@ -677,7 +753,7 @@
 /* Begin PBXTargetDependency section */
 		086B554C17F0960A00D9CC67 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 086B552117F0960900D9CC67 /* ABT */;
+			target = 086B552117F0960900D9CC67 /* Arbeidstider */;
 			targetProxy = 086B554B17F0960A00D9CC67 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -798,9 +874,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ABT/ABT-Prefix.pch";
-				INFOPLIST_FILE = "ABT/ABT-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ABT/Arbeidstider-Prefix.pch";
+				INFOPLIST_FILE = "ABT/Arbeidstider-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = Arbeidstider;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -811,9 +888,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ABT/ABT-Prefix.pch";
-				INFOPLIST_FILE = "ABT/ABT-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ABT/Arbeidstider-Prefix.pch";
+				INFOPLIST_FILE = "ABT/Arbeidstider-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = Arbeidstider;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -834,8 +912,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "ABTTests/ABTTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "ABTTests/ArbeidstiderTests-Info.plist";
+				PRODUCT_NAME = ArbeidstiderTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -853,8 +931,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABT/ABT-Prefix.pch";
-				INFOPLIST_FILE = "ABTTests/ABTTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "ABTTests/ArbeidstiderTests-Info.plist";
+				PRODUCT_NAME = ArbeidstiderTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -863,7 +941,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		086B551D17F0960900D9CC67 /* Build configuration list for PBXProject "ABT" */ = {
+		086B551D17F0960900D9CC67 /* Build configuration list for PBXProject "Arbeidstider" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				086B555517F0960A00D9CC67 /* Debug */,
@@ -872,21 +950,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		086B555717F0960A00D9CC67 /* Build configuration list for PBXNativeTarget "ABT" */ = {
+		086B555717F0960A00D9CC67 /* Build configuration list for PBXNativeTarget "Arbeidstider" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				086B555817F0960A00D9CC67 /* Debug */,
 				086B555917F0960A00D9CC67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		086B555A17F0960A00D9CC67 /* Build configuration list for PBXNativeTarget "ABTTests" */ = {
+		086B555A17F0960A00D9CC67 /* Build configuration list for PBXNativeTarget "ArbeidstiderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				086B555B17F0960A00D9CC67 /* Debug */,
 				086B555C17F0960A00D9CC67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

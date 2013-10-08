@@ -13,8 +13,11 @@
 @property (strong,readwrite) SidePanelViewController*SideView;
 @property (strong,readwrite) VaktListeViewController*VaktListeView;
 @property (strong,readwrite) NSMutableArray *shifts;
+@property (strong,readwrite) NSMutableArray *allPersons;
 @property (strong,readwrite) NSArray *workDates;
+@property (readwrite,retain) NSDate *currentDate;
 
 +(SingleTon*)Views;
 +(SingleTon*)Shifts;
+
 @end

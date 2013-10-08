@@ -7,7 +7,8 @@
 //
 
 #import "PersonViewController.h"
-#import "SingleTon.h"
+#import "ABTPerson.h"
+
 @interface PersonViewController ()
 @end
 
@@ -26,6 +27,19 @@
 {
     [super viewDidLoad];
     [self makeTopBar];
+    
+    NSString* pathToFile = [[NSBundle mainBundle] pathForResource:@"json" ofType: @"txt"];
+    NSString *file = [[NSString alloc] initWithContentsOfFile:pathToFile encoding:  NSUTF8StringEncoding error:NULL];
+    NSData *jsonData = [file dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *e;
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&e];
+    NSMutableArray *mtbArray = [[NSMutableArray alloc]init];
+    for (NSDictionary *dictionary in array) {
+        ABTPerson *person = [[ABTPerson alloc]initWithDict:dictionary];
+        [mtbArray addObject:person];
+    }
+    [SingleTon Shifts].allPersons = mtbArray;
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -40,7 +54,9 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"Personer";
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.frame = CGRectMake(110, 5, 160, 30);
+    titleLabel.frame = CGRectMake(0, 0, self.view.bounds.size.width, HEADER_HEIGHT);
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE];
     [headerView addSubview:titleLabel];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self
@@ -48,6 +64,7 @@
      forControlEvents:UIControlEventTouchUpInside];
     [button setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     button.frame = CGRectMake(5.0, 5.0, 40.0, 40.0);
+    
     [headerView addSubview:button];
     [self.view addSubview:headerView];
     

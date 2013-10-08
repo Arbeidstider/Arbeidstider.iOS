@@ -121,7 +121,7 @@
     self.dayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.cellSize.width, self.cellSize.height)];
     self.dayNameLabel.center = CGPointMake(containingView.frame.size.width/2, self.cellSize.height/1.3);
     self.dayNameLabel.textAlignment = NSTextAlignmentCenter;
-    self.dayNameLabel.font = [UIFont fontWithName:@"Helvetica" size:self.dayNameLabel.font.pointSize];
+    self.dayNameLabel.font = [UIFont fontWithName:THIN size:self.dayNameLabel.font.pointSize];
     self.dayNameLabel.backgroundColor = [UIColor clearColor];
     [containingView addSubview: self.dayLabel];
     [containingView addSubview: self.dayNameLabel];

@@ -15,7 +15,9 @@
 #import "AFFNManager.h"
 #import "AFFNImageManager.h"
 #import "UIImageView+AFFNImage.h"
+#import "SingleTon.h"
 #endif
 #define HEADER_HEIGHT 48
-#define THIN @"HelveticaNeueCE-Thin"
-#define LIGHT @"HelveticaNeueLight"
+#define HEADER_FONT_SIZE 30
+#define THIN @"HelveticaNeue-Thin"
+#define LIGHT @"HelveticaNeue-Light"

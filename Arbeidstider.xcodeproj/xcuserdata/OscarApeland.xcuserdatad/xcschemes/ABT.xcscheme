@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "086B552117F0960900D9CC67"
-               BuildableName = "ABT.app"
-               BlueprintName = "ABT"
-               ReferencedContainer = "container:ABT.xcodeproj">
+               BuildableName = "Arbeidstider.app"
+               BlueprintName = "Arbeidstider"
+               ReferencedContainer = "container:Arbeidstider.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "086B554517F0960A00D9CC67"
-               BuildableName = "ABTTests.xctest"
-               BlueprintName = "ABTTests"
-               ReferencedContainer = "container:ABT.xcodeproj">
+               BuildableName = "ArbeidstiderTests.xctest"
+               BlueprintName = "ArbeidstiderTests"
+               ReferencedContainer = "container:Arbeidstider.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "086B552117F0960900D9CC67"
-            BuildableName = "ABT.app"
-            BlueprintName = "ABT"
-            ReferencedContainer = "container:ABT.xcodeproj">
+            BuildableName = "Arbeidstider.app"
+            BlueprintName = "Arbeidstider"
+            ReferencedContainer = "container:Arbeidstider.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "086B552117F0960900D9CC67"
-            BuildableName = "ABT.app"
-            BlueprintName = "ABT"
-            ReferencedContainer = "container:ABT.xcodeproj">
+            BuildableName = "Arbeidstider.app"
+            BlueprintName = "Arbeidstider"
+            ReferencedContainer = "container:Arbeidstider.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "086B552117F0960900D9CC67"
-            BuildableName = "ABT.app"
-            BlueprintName = "ABT"
-            ReferencedContainer = "container:ABT.xcodeproj">
+            BuildableName = "Arbeidstider.app"
+            BlueprintName = "Arbeidstider"
+            ReferencedContainer = "container:Arbeidstider.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

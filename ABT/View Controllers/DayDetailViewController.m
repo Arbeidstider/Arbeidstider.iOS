@@ -64,6 +64,7 @@
     }
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
     headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
+    
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = labelString;
     titleLabel.textColor = [UIColor whiteColor];
@@ -79,10 +80,8 @@
     [doneButton setImage:[UIImage imageNamed:@"doneIcon.png"] forState:UIControlStateNormal];
     doneButton.frame = CGRectMake(270.0, 5.0, 45.0, 40.0);
     [headerView addSubview:doneButton];
-
+    
     [self.view addSubview:headerView];
-    
-    
 }
 
 

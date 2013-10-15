@@ -39,8 +39,18 @@
     _viewsArray = [[NSArray alloc]initWithObjects:@"Forside",@"Dine Vakter",@"Oppslag",@"Personer",@"Penger",@"Innstillinger", nil];
     _imagesArray = [[NSArray alloc]initWithObjects:@"frontpage.png",@"vakter.png",@"oppslag.png",@"personer",@"penger.png",@"innstillinger.png",nil];
     self.menuTableView.backgroundColor = [UIColor colorWithRed:244.0/255 green:244.0/255 blue:244.0/255 alpha:1.0];
+    self.menuTableView.frame = CGRectMake(0, HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
     
+    /* KODE FOR Å LAGE FOOTER TIL SLIDEOUTMENU; UTILIZE LATER;
+    UIControl *bottomView = [[UIControl alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-48, self.view.frame.size.width, 48)];
+    [bottomView addTarget:self action:@selector(footerPressed) forControlEvents:UIControlEventTouchUpInside];
+    bottomView.backgroundColor = [UIColor headerColor];
+    [self.view addSubview:bottomView];
+    */
 
+}
+-(void)footerPressed{
+    NSLog(@"footer pressed");
 }
 - (void)didReceiveMemoryWarning
 {
@@ -89,6 +99,7 @@
     if (indexPath.row > _viewsArray.count) {
         return nil;
     }
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

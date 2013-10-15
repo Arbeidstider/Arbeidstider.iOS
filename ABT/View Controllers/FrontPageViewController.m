@@ -32,7 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    
+    
     // MZDAYPICKER SETUP
     self.selectedLabel.font = [UIFont fontWithName:THIN size:17.0f];
     
@@ -40,13 +42,11 @@
     self.dayPicker.dataSource = self;
     self.dayPicker.month = 9;
     self.dayPicker.year = 2013;
-    self.dayPicker.dayNameLabelFontSize = 11.0f;
+    self.dayPicker.dayNameLabelFontSize = 12.0f;
     
     self.dayPicker.dayLabelFontSize = 18.0f;    
-//    [self.dayPicker setActiveDaysFrom:1 toDay:30];
     [self.dayPicker setStartDate:[NSDate dateFromDay:1 month:9 year:2013] endDate:[NSDate dateFromDay:31 month:10 year:2013]];
-    [self.dayPicker setCurrentDate:[NSDate date] animated:NO];
-    
+    [self.dayPicker setCurrentDate:[NSDate date] animated:YES];
     [self makeTopBar];
     
     //Bra, stabil thirdpartyløsning
@@ -54,6 +54,7 @@
     [self.params setObject:@"7" forKey:@"employeeID"];
     [self.params setObject:@"2013-09-13" forKey:@"startDate"];
     [self.params setObject:@"2013-09-30" forKey:@"endDate"];
+    
     AFFNRequest *request = [AFFNRequest requestWithConnectionType:kAFFNGet andURL:@"http://services.arbeidstider.no/TimeSheetService/GetAllTimeSheets" andParams:_params withCompletion:^(AFFNCallbackObject *result){
         //Callback block for completion
         
@@ -82,10 +83,37 @@
     
     [[AFFNManager sharedManager] addNetworkOperation:request];
 }
+-(NSString*)convertDateToName:(NSDate*)date{
+    
+    NSString *returnstring = [[NSString alloc]init];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale= [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages]objectAtIndex:0]];
+    dateFormatter.dateFormat = @"EEEE d. MMMM";
+    if (![[[NSLocale preferredLanguages]objectAtIndex:0]isEqualToString:@"nb"]) {
+        NSDateFormatter *prefixDateFormatter = [[NSDateFormatter alloc] init];
+        [prefixDateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+        [prefixDateFormatter setDateFormat:@"EEEE MMMM d"];
+        NSString *prefixDateString = [prefixDateFormatter stringFromDate:date];
+        NSDateFormatter *monthDayFormatter = [[NSDateFormatter alloc] init];
+        [monthDayFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+        [monthDayFormatter setDateFormat:@"d"];
+        int date_day = [[monthDayFormatter stringFromDate:date] intValue];
+        NSString *suffix_string = @"|st|nd|rd|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|st|nd|rd|th|th|th|th|th|th|th|st";
+        NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];
+        NSString *suffix = [suffixes objectAtIndex:date_day];
+        NSString *dateString = [prefixDateString stringByAppendingString:suffix];
+        returnstring = dateString;
+    }else
+    {returnstring = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:date]];}//Norsk return
+    
+    return returnstring;
+}
 
 -(void)makeTopBar{
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
-    headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
+    headerView.backgroundColor = [UIColor headerColor];
+    
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"Forside";
     titleLabel.textColor = [UIColor whiteColor];
@@ -114,6 +142,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark - Daypickerdelegate
 - (void)dayPicker:(MZDayPicker *)dayPicker willSelectDay:(MZDay *)day
 {
@@ -122,30 +151,8 @@
 - (void)dayPicker:(MZDayPicker *)dayPicker didSelectDay:(MZDay *)day
 {
     NSDate *date = day.date;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale= [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages]objectAtIndex:0]];
-    dateFormatter.dateFormat = @"EEEE d. MMMM";
-
-    if (![[[NSLocale preferredLanguages]objectAtIndex:0]isEqualToString:@"nb"]) {
-        NSDateFormatter *prefixDateFormatter = [[NSDateFormatter alloc] init];
-        [prefixDateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-        [prefixDateFormatter setDateFormat:@"EEEE MMMM d"];
-        NSString *prefixDateString = [prefixDateFormatter stringFromDate:date];
-        NSDateFormatter *monthDayFormatter = [[NSDateFormatter alloc] init];
-        [monthDayFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-        [monthDayFormatter setDateFormat:@"d"];
-        int date_day = [[monthDayFormatter stringFromDate:date] intValue];
-        NSString *suffix_string = @"|st|nd|rd|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|st|nd|rd|th|th|th|th|th|th|th|st";
-        NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];
-        NSString *suffix = [suffixes objectAtIndex:date_day];
-        NSString *dateString = [prefixDateString stringByAppendingString:suffix];
-        self.selectedLabel.text = dateString;
-    }else
-    {self.selectedLabel.text = [NSString stringWithFormat:@"Valgt dag: %@",[dateFormatter stringFromDate:date]];}
-    
-    
     ////////////////
-    
+    self.selectedLabel.text = [self convertDateToName:date];
   
     
 }

@@ -10,12 +10,12 @@
 
 @interface ABTPerson : NSObject
 
-@property (readwrite) NSString *name;
+@property (readwrite,retain) NSString *name;
 @property (readwrite) int age;
-@property (readwrite) NSString *telNumber;
-@property (readwrite) NSString *mailAdrs;
-@property (readwrite) NSString *fbID;
+@property (readwrite,retain) NSString *telNumber;
+@property (readwrite,retain) NSString *mailAdrs;
+@property (readwrite,retain) NSString *fbID;
+@property (readwrite,retain) NSString *workerClass;
 
 -(id)initWithDict:(NSDictionary *)dict;
-
 @end

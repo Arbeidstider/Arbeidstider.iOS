@@ -96,19 +96,35 @@
     [SingleTon Shifts].currentDate = date;
     //[[SingleTon Views].SideView changeCenterPanel:@"DayDetail"];
     [self presentPopupViewController:[[DayDetailViewController alloc]init] animationType:MJPopupViewAnimationSlideBottomTop];
-    /*NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm";
-    
-    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    [dateFormatter setTimeZone:gmt];
-    NSString *timeStamp = [dateFormatter stringFromDate:[NSDate date]];
-    */
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    //NSLog(@"index: %@",[calendarView.collectionView cellForItemAtIndexPath:indexPath]);
     [calendarView addDotWithColor:[UIColor blackColor] atIndexPath:indexPath];
-    [dateFormat setDateFormat:@"dd-MM-yyyy"];
-    NSString *dateString = [dateFormat stringFromDate:date];
-    NSLog(@"Selected date: %@",dateString);
+    
+    
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    dateFormatter.locale= [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages]objectAtIndex:0]];
+    dateFormatter.dateFormat = @"EEEE d. MMMM";
+    NSString *logString = [[NSString alloc]init];
+    
+    if (![[[NSLocale preferredLanguages]objectAtIndex:0]isEqualToString:@"nb"]) {
+        NSDateFormatter *prefixDateFormatter = [[NSDateFormatter alloc] init];
+        [prefixDateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+        [prefixDateFormatter setDateFormat:@"EEEE MMMM d"];
+        NSString *prefixDateString = [prefixDateFormatter stringFromDate:date];
+        NSDateFormatter *monthDayFormatter = [[NSDateFormatter alloc] init];
+        [monthDayFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+        [monthDayFormatter setDateFormat:@"d"];
+        int date_day = [[monthDayFormatter stringFromDate:date] intValue];
+        NSString *suffix_string = @"|st|nd|rd|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|st|nd|rd|th|th|th|th|th|th|th|st";
+        NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];
+        NSString *suffix = [suffixes objectAtIndex:date_day];
+        NSString *dateString = [prefixDateString stringByAppendingString:suffix];
+        logString = dateString;
+        
+    }else{
+        logString = [dateFormatter stringFromDate:date];
+    }
+    NSLog(@"Selected date: %@",logString);
 
 }
 -(void)dismissPopup{

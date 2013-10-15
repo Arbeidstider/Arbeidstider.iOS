@@ -17,6 +17,7 @@
         self.fbID = [dict objectForKey:@"fbID"];
         self.telNumber = [dict objectForKey:@"number"];
         self.mailAdrs = [dict objectForKey:@"mailAdrs"];
+        self.workerClass = [dict objectForKey:@"class"];
     }
     return self;
 }

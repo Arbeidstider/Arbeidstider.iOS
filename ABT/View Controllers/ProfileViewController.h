@@ -1,5 +1,5 @@
 //
-//  DayDetailViewController.h
+//  ProfileViewController.h
 //  Arbeidstider
 //
 //  Created by Oscar Apeland on 15.10.13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DayDetailViewController : UIViewController
+@interface ProfileViewController : UIViewController
 
 @end

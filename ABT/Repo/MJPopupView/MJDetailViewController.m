@@ -7,7 +7,9 @@
 //
 
 #import "MJDetailViewController.h"
-
+@interface MJDetailViewController ()
+    @property (strong,retain) IBOutlet UIImageView *imgView;
+@end
 @implementation MJDetailViewController
 
 @end

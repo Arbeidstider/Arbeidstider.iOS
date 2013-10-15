@@ -384,7 +384,9 @@ static BOOL NSRangeContainsRow (NSRange range, NSInteger row) {
         
         MZDay *newDay = [[MZDay alloc] init];
         newDay.day = @([[dateNumberFormatter stringFromDate:date] integerValue]);
-        newDay.name = [dateNameFormatter stringFromDate:date];
+        
+        newDay.name = [[[dateNameFormatter stringFromDate:date] substringWithRange:NSMakeRange(0, 3)]uppercaseString];
+        //newDay.name = [dateNameFormatter stringFromDate:date];
         newDay.date = date;
         
         [tableData addObject:newDay];
@@ -396,7 +398,8 @@ static BOOL NSRangeContainsRow (NSRange range, NSInteger row) {
 
         MZDay *newDay = [[MZDay alloc] init];
         newDay.day = @([[dateNumberFormatter stringFromDate:date] integerValue]);
-        newDay.name = [dateNameFormatter stringFromDate:date];
+        newDay.name = [[[dateNameFormatter stringFromDate:date] substringWithRange:NSMakeRange(0, 3)]uppercaseString];
+        //newDay.name = [dateNameFormatter stringFromDate:date];
         newDay.date = date;
         
         [tableData addObject:newDay];
@@ -409,7 +412,8 @@ static BOOL NSRangeContainsRow (NSRange range, NSInteger row) {
 
         MZDay *newDay = [[MZDay alloc] init];
         newDay.day = @([[dateNumberFormatter stringFromDate:date] integerValue]);
-        newDay.name = [dateNameFormatter stringFromDate:date];
+        newDay.name = [[[dateNameFormatter stringFromDate:date] substringWithRange:NSMakeRange(0, 3)]uppercaseString];
+        //newDay.name = [dateNameFormatter stringFromDate:date];
         newDay.date = date;
         
         [tableData addObject:newDay];

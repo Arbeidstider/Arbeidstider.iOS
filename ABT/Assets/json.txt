@@ -1,1 +1,26 @@
-[{"name":"Oscar Apeland","age":17,"fbID":"oscar.apeland","mailAdrs":"oscar.apeland@icloud.com","number":"47500260"},{"name":"Henrik Gundersen","age":19,"fbID":"henrik.camwhoredame","mailAdrs":"henrik@fitte.com","number":"5005135"},{"name":"Bjørn Wahl","age":13,"fbID":"bjørnen.sover","mailAdrs":"bjørn@wahl.com","number":"4554073"},{"name":"Oscar Apeland","age":17,"fbID":"oscar.apeland","mailAdrs":"oscar.apeland@icloud.com","number":"47500260"},{"name":"Henrik Gundersen","age":19,"fbID":"henrik.camwhoredame","mailAdrs":"henrik@fitte.com","number":"5005135"},{"name":"Bjørn Wahl","age":13,"fbID":"bjørnen.sover","mailAdrs":"bjørn@wahl.com","number":"4554073"},{"name":"Oscar Apeland","age":17,"fbID":"oscar.apeland","mailAdrs":"oscar.apeland@icloud.com","number":"47500260"},{"name":"Henrik Gundersen","age":19,"fbID":"henrik.camwhoredame","mailAdrs":"henrik@fitte.com","number":"5005135"},{"name":"Bjørn Wahl","age":13,"fbID":"bjørnen.sover","mailAdrs":"bjørn@wahl.com","number":"4554073"},{"name":"Oscar Apeland","age":17,"fbID":"oscar.apeland","mailAdrs":"oscar.apeland@icloud.com","number":"47500260"},{"name":"Henrik Gundersen","age":19,"fbID":"henrik.camwhoredame","mailAdrs":"henrik@fitte.com","number":"5005135"},{"name":"Bjørn Wahl","age":13,"fbID":"bjørnen.sover","mailAdrs":"bjørn@wahl.com","number":"4554073"},{"name":"Oscar Apeland","age":17,"fbID":"oscar.apeland","mailAdrs":"oscar.apeland@icloud.com","number":"47500260"},{"name":"Henrik Gundersen","age":19,"fbID":"henrik.camwhoredame","mailAdrs":"henrik@fitte.com","number":"5005135"},{"name":"Bjørn Wahl","age":13,"fbID":"bjørnen.sover","mailAdrs":"bjørn@wahl.com","number":"4554073"}]
+[
+    {
+        "name": "Oscar Apeland",
+        "age": "17",
+        "fbID": "oscar.apeland",
+        "mailAdrs": "oscar.apeland@icloud.com",
+        "number": "47500260",
+        "class" : "2"
+    },
+    {
+        "name": "Henrik Gundersen",
+        "age": "19",
+        "fbID": "henrik.camwhoredame",
+        "mailAdrs": "henrik@fitte.com",
+        "number": "5005135",
+        "class" : "1"
+    },
+    {
+        "name": "Bjørn Wahl",
+        "age": "13",
+        "fbID": "bjørnen.sover",
+        "mailAdrs": "bjørn@wahl.com",
+        "number": "4554073",
+        "class": "0"
+    }
+]

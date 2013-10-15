@@ -16,6 +16,7 @@
 #import "AFFNImageManager.h"
 #import "UIImageView+AFFNImage.h"
 #import "SingleTon.h"
+#import "UIColor+ABTColors.h"
 #endif
 #define HEADER_HEIGHT 48
 #define HEADER_FONT_SIZE 30

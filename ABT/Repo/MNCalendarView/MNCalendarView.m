@@ -84,10 +84,8 @@
         NSLog(@"couldn't find index path");
         
     } else {
-        // do stuff with indexPath
-        [self addDotWithColor:[UIColor yellowColor] atIndexPath:indexPath];
-        //[self selectCell:indexPath];
-        
+        MNCalendarViewDayCell *cell = (MNCalendarViewDayCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        [self.delegate calendarView:self didLongPressDate:cell.date atIndex:indexPath];
     }
 }
 

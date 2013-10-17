@@ -44,6 +44,7 @@
 
 - (BOOL)calendarView:(MNCalendarView *)calendarView shouldSelectDate:(NSDate *)date;
 - (void)calendarView:(MNCalendarView *)calendarView didSelectDate:(NSDate *)date atIndex:(NSIndexPath*)indexPath;
+-(void)calendarView:(MNCalendarView *)calendarView didLongPressDate:(NSDate *)date atIndex:(NSIndexPath *)indexPath;
 @end
 @interface NSDate (Additional)
 + (NSDate *)dateFromDay:(NSInteger)day month:(NSInteger)month year:(NSInteger)year;

@@ -14,14 +14,13 @@
                         <viewControllerLayoutGuide type="bottom" id="fnV-EG-iiL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tva-e0-TYn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.1764705882" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="3OJ-Sa-QgJ"/>
                     <keyCommands/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIi-sz-PRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

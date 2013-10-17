@@ -86,6 +86,7 @@
 
 
 - (void)menuButtonPressed{
+    NSLog(@"pressed");
     [[SingleTon Views].VaktListeView dismissPopup];
     //[[SingleTon Views].SideView showLeftView];
 }

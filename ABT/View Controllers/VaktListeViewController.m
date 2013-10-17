@@ -13,16 +13,22 @@
 #import "MJDetailViewController.h"
 #import "AwesomeMenu.h"
 #import "DayDetailViewController.h"
-@interface VaktListeViewController () <MNCalendarViewDelegate>
+#import "JLActionSheet.h"
+
+@interface VaktListeViewController () <MNCalendarViewDelegate,JLActionSheetDelegate>
 @property (nonatomic,strong) NSDateFormatter *dateFormatter;
 @property (nonatomic,weak) UIImageView *infoImage;
 @property (strong,nonatomic) MJDetailViewController *detailView;
 @property (strong,nonatomic) NSArray *awesomeMenuItems;
 @property (strong,nonatomic) MNCalendarView *calendarView;
+@property (strong,nonatomic) JLActionSheet *actionSheet;
+@property (retain) NSArray *sheetArray;
+@property NSString *actionSheetTitleString;
+@property NSIndexPath *selectedInteger;
 @end
 
 @implementation VaktListeViewController
-
+@synthesize sheetArray = _sheetArray;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,17 +45,18 @@
     self.calendarView = [[MNCalendarView alloc]initWithFrame:CGRectMake(0, 48, 320, 305)];
     self.calendarView.selectedDate = [NSDate date];
     self.calendarView.delegate = self;
+    
     [self.view addSubview:self.calendarView];
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [SingleTon Views].VaktListeView = self;
     });
 
-}
-
+    self.actionSheet = [JLActionSheet sheetWithTitle:@"Status..." delegate:self cancelButtonTitle:@"Avbryt" otherButtonTitles:[NSArray arrayWithObjects: @"Kan", @"Helst ikke", @"Kan ikke", nil]];
+    [self.actionSheet allowTapToDismiss:YES];
     
-
-
+}
 -(void)makeTopBar{
     self.detailView = [[MJDetailViewController alloc]init];
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
@@ -79,17 +86,50 @@
     [self.view addSubview:headerView];
 }
 -(void)infoPressed{
-    
     [self presentPopupViewController:self.detailView animationType:MJPopupViewAnimationFade];
-    
 }
-- (void)menuButtonPressed{
+-(void)menuButtonPressed{
     [[SingleTon Views].SideView showLeftView];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+
+#pragma mark - JLActionSheet Delegates
+-(void)actionSheet:(JLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"%ld",(long)buttonIndex);
+    switch (buttonIndex) {
+        case 3:
+            [self.calendarView addDotWithColor:[UIColor greenColor] atIndexPath:self.selectedInteger];
+            break;
+        case 2:
+            [self.calendarView addDotWithColor:[UIColor orangeColor] atIndexPath:self.selectedInteger];
+            break;
+        case 1:
+            [self.calendarView addDotWithColor:[UIColor redColor] atIndexPath:self.selectedInteger];
+            break;
+        case 0:
+            break;
+        default:
+            break;
+    }
+    
+}
+-(void)actionSheet:(JLActionSheet *)actionSheet didDismissButtonAtIndex:(NSInteger)buttonIndex{
+    
+}
+
+
+#pragma mark - MNCalendar Delegates
+
+- (void)calendarView:(MNCalendarView *)calendarView didLongPressDate:(NSDate *)date atIndex:(NSIndexPath *)indexPath{
+    self.selectedInteger = indexPath;
+    [self.actionSheet showInView:self.view];
 }
 - (void)calendarView:(MNCalendarView *)calendarView didSelectDate:(NSDate *)date atIndex:(NSIndexPath *)indexPath{
     
@@ -128,6 +168,7 @@
 
 }
 -(void)dismissPopup{
+    NSLog(@"dismiss");
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
 }
 

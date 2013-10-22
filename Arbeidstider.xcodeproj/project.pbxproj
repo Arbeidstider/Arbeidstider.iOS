@@ -21,6 +21,9 @@
 		0805E04E17FB185000B464D6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E04117FB185000B464D6 /* Icon.png */; };
 		0805E04F17FB185000B464D6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E04217FB185000B464D6 /* Icon@2x.png */; };
 		0805E05417FCD55E00B464D6 /* infoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805E05317FCD55E00B464D6 /* infoIcon.png */; };
+		08136FF318110E8800B6F4CF /* CalendarActionsheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 08136FF218110E8800B6F4CF /* CalendarActionsheet.m */; };
+		08136FF518110E9A00B6F4CF /* CalendarActionsheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08136FF418110E9A00B6F4CF /* CalendarActionsheet.xib */; };
+		081370001811491900B6F4CF /* SelectedCellFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 08136FFF1811491900B6F4CF /* SelectedCellFrame.png */; };
 		08252E55180D5E14000AD875 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08252E53180D5E14000AD875 /* ProfileViewController.m */; };
 		08252E56180D5E14000AD875 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08252E54180D5E14000AD875 /* ProfileViewController.xib */; };
 		08252E5A180D618C000AD875 /* DayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08252E58180D618C000AD875 /* DayDetailViewController.m */; };
@@ -95,9 +98,6 @@
 		086B55F017F0AA2100D9CC67 /* vakter.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55BF17F0AA2100D9CC67 /* vakter.png */; };
 		086B55F417F0AB4100D9CC67 /* SingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B55F317F0AB4100D9CC67 /* SingleTon.m */; };
 		086B55F617F0AB7C00D9CC67 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B55F517F0AB7C00D9CC67 /* QuartzCore.framework */; };
-		086BEBA0180E83DB0043A481 /* JLActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BEB9B180E83DB0043A481 /* JLActionButton.m */; };
-		086BEBA1180E83DB0043A481 /* JLActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BEB9D180E83DB0043A481 /* JLActionSheet.m */; };
-		086BEBA2180E83DB0043A481 /* JLActionSheetStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BEB9F180E83DB0043A481 /* JLActionSheetStyle.m */; };
 		086C74F61808077900373601 /* UIColor+ABTColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 086C74F51808077900373601 /* UIColor+ABTColors.m */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +126,10 @@
 		0805E04117FB185000B464D6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		0805E04217FB185000B464D6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		0805E05317FCD55E00B464D6 /* infoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoIcon.png; sourceTree = "<group>"; };
+		08136FF118110E8800B6F4CF /* CalendarActionsheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarActionsheet.h; sourceTree = "<group>"; };
+		08136FF218110E8800B6F4CF /* CalendarActionsheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarActionsheet.m; sourceTree = "<group>"; };
+		08136FF418110E9A00B6F4CF /* CalendarActionsheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarActionsheet.xib; sourceTree = "<group>"; };
+		08136FFF1811491900B6F4CF /* SelectedCellFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectedCellFrame.png; sourceTree = "<group>"; };
 		08252E52180D5E14000AD875 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		08252E53180D5E14000AD875 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		08252E54180D5E14000AD875 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -242,12 +246,6 @@
 		086B55F217F0AB4100D9CC67 /* SingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTon.h; sourceTree = "<group>"; };
 		086B55F317F0AB4100D9CC67 /* SingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTon.m; sourceTree = "<group>"; };
 		086B55F517F0AB7C00D9CC67 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		086BEB9A180E83DB0043A481 /* JLActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLActionButton.h; sourceTree = "<group>"; };
-		086BEB9B180E83DB0043A481 /* JLActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLActionButton.m; sourceTree = "<group>"; };
-		086BEB9C180E83DB0043A481 /* JLActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLActionSheet.h; sourceTree = "<group>"; };
-		086BEB9D180E83DB0043A481 /* JLActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLActionSheet.m; sourceTree = "<group>"; };
-		086BEB9E180E83DB0043A481 /* JLActionSheetStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLActionSheetStyle.h; sourceTree = "<group>"; };
-		086BEB9F180E83DB0043A481 /* JLActionSheetStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLActionSheetStyle.m; sourceTree = "<group>"; };
 		086C74F41808077900373601 /* UIColor+ABTColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+ABTColors.h"; path = "Extensions/UIColor+ABTColors.h"; sourceTree = "<group>"; };
 		086C74F51808077900373601 /* UIColor+ABTColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ABTColors.m"; path = "Extensions/UIColor+ABTColors.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,6 +293,14 @@
 				0805E04217FB185000B464D6 /* Icon@2x.png */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		08136FFE1811491900B6F4CF /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				08136FFF1811491900B6F4CF /* SelectedCellFrame.png */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		08252E62180D71EF000AD875 /* Oppslag */ = {
@@ -441,7 +447,6 @@
 		086B556F17F0AA2100D9CC67 /* Repo */ = {
 			isa = PBXGroup;
 			children = (
-				086BEB99180E83DB0043A481 /* JLActionSheet */,
 				086B557017F0AA2100D9CC67 /* AFFNetworking */,
 				086B558117F0AA2100D9CC67 /* AwesomeMenu */,
 				086B558617F0AA2100D9CC67 /* JASidePanel */,
@@ -579,6 +584,7 @@
 		086B55AC17F0AA2100D9CC67 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				08136FFE1811491900B6F4CF /* Calendar */,
 				084AA97D17FD943F00FD3B5A /* json.txt */,
 				0805E03517FB185000B464D6 /* Icons */,
 				086B55AD17F0AA2100D9CC67 /* AwesomeMenuItems */,
@@ -636,19 +642,6 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
-		086BEB99180E83DB0043A481 /* JLActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				086BEB9A180E83DB0043A481 /* JLActionButton.h */,
-				086BEB9B180E83DB0043A481 /* JLActionButton.m */,
-				086BEB9C180E83DB0043A481 /* JLActionSheet.h */,
-				086BEB9D180E83DB0043A481 /* JLActionSheet.m */,
-				086BEB9E180E83DB0043A481 /* JLActionSheetStyle.h */,
-				086BEB9F180E83DB0043A481 /* JLActionSheetStyle.m */,
-			);
-			path = JLActionSheet;
-			sourceTree = "<group>";
-		};
 		086C74ED1806CB4200373601 /* Personer */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,6 +673,9 @@
 				08252E57180D618C000AD875 /* DayDetailViewController.h */,
 				08252E58180D618C000AD875 /* DayDetailViewController.m */,
 				08252E59180D618C000AD875 /* DayDetailViewController.xib */,
+				08136FF118110E8800B6F4CF /* CalendarActionsheet.h */,
+				08136FF218110E8800B6F4CF /* CalendarActionsheet.m */,
+				08136FF418110E9A00B6F4CF /* CalendarActionsheet.xib */,
 			);
 			name = Vaktlistekalender;
 			sourceTree = "<group>";
@@ -776,12 +772,14 @@
 				0805E04817FB185000B464D6 /* Icon-Med-40.png in Resources */,
 				0805E04A17FB185000B464D6 /* Icon-Small-50.png in Resources */,
 				0805E04617FB185000B464D6 /* Icon-72.png in Resources */,
+				08136FF518110E9A00B6F4CF /* CalendarActionsheet.xib in Resources */,
 				0805E04C17FB185000B464D6 /* Icon-Small.png in Resources */,
 				086B55ED17F0AA2100D9CC67 /* oppslag.png in Resources */,
 				086B55E117F0AA2100D9CC67 /* coloredDots.png in Resources */,
 				086B55F017F0AA2100D9CC67 /* vakter.png in Resources */,
 				08252E5B180D618C000AD875 /* DayDetailViewController.xib in Resources */,
 				086B55E717F0AA2100D9CC67 /* menuItemRed.png in Resources */,
+				081370001811491900B6F4CF /* SelectedCellFrame.png in Resources */,
 				086B55EC17F0AA2100D9CC67 /* menu.png in Resources */,
 				086B55EF17F0AA2100D9CC67 /* personer.png in Resources */,
 				0805E05417FCD55E00B464D6 /* infoIcon.png in Resources */,
@@ -828,15 +826,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				086BEBA0180E83DB0043A481 /* JLActionButton.m in Sources */,
 				086B55DC17F0AA2100D9CC67 /* MNFastDateEnumeration.m in Sources */,
 				086B55C617F0AA2100D9CC67 /* SidePanelViewController.m in Sources */,
-				086BEBA1180E83DB0043A481 /* JLActionSheet.m in Sources */,
 				086B55C417F0AA2100D9CC67 /* OppslagViewController.m in Sources */,
 				086B55CA17F0AA2100D9CC67 /* UIImageView+AFFNImage.m in Sources */,
 				086B55CC17F0AA2100D9CC67 /* AFFNRequest.m in Sources */,
 				086B55DD17F0AA2100D9CC67 /* NSDate+MNAdditions.m in Sources */,
-				086BEBA2180E83DB0043A481 /* JLActionSheetStyle.m in Sources */,
 				086B55F417F0AB4100D9CC67 /* SingleTon.m in Sources */,
 				086B55D917F0AA2100D9CC67 /* MNCalendarViewDayCell.m in Sources */,
 				086B55DE17F0AA2100D9CC67 /* MZDay.m in Sources */,
@@ -846,6 +841,7 @@
 				086B55CB17F0AA2100D9CC67 /* AFFNManager.m in Sources */,
 				086B55DB17F0AA2100D9CC67 /* MNCalendarViewWeekdayCell.m in Sources */,
 				086B55C717F0AA2100D9CC67 /* VaktListeViewController.m in Sources */,
+				08136FF318110E8800B6F4CF /* CalendarActionsheet.m in Sources */,
 				086B55D517F0AA2100D9CC67 /* UIViewController+MJPopupViewController.m in Sources */,
 				08252E5A180D618C000AD875 /* DayDetailViewController.m in Sources */,
 				08252E61180D71E2000AD875 /* PengerViewController.m in Sources */,

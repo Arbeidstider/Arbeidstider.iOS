@@ -58,11 +58,27 @@
     
     UILongPressGestureRecognizer *longpressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     longpressGesture.minimumPressDuration = 0.5f;
+    
     longpressGesture.delegate = self;
     [self.collectionView addGestureRecognizer:longpressGesture];
     
 
 
+}
+-(void)frameForPath:(NSIndexPath*)indexPath remove:(BOOL)remove{
+    MNCalendarViewDayCell *cell = (MNCalendarViewDayCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+    if (remove) {
+        for (UIImageView *imgView in cell.subviews) {
+            if ([imgView isKindOfClass:UIImageView.class]) {
+                [imgView removeFromSuperview];
+            }
+        }
+    }
+    else {
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:cell.bounds];
+        imageView.image = [UIImage imageNamed:@"SelectedCellFrame.png"];
+        [cell addSubview:imageView];}
+    
 }
 -(void)addDotWithColor:(UIColor *)color atIndexPath:(NSIndexPath *)indexPath{
     MNCalendarViewDayCell *cell = (MNCalendarViewDayCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
@@ -71,20 +87,43 @@
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
     
-    if (gestureRecognizer.state != UIGestureRecognizerStateEnded) {
-        return;
+    //if (gestureRecognizer.state != UIGestureRecognizerStateRecognized) {
+    //    return;
+    //}
+    
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            break;
+        case UIGestureRecognizerStateCancelled:
+            return;
+            break;
+        case UIGestureRecognizerStateRecognized:
+            return;
+            break;
+        case UIGestureRecognizerStatePossible:
+            return;
+            break;
+        case UIGestureRecognizerStateFailed:
+            return;
+            break;
+        case UIGestureRecognizerStateChanged:
+            return;
+            break;
+        default:
+            break;
     }
     
     
     
-    CGPoint p = [gestureRecognizer locationInView:self.collectionView];
     
+    CGPoint p = [gestureRecognizer locationInView:self.collectionView];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
+    
+    MNCalendarViewDayCell *cell = (MNCalendarViewDayCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+
     if (indexPath == nil){
         NSLog(@"couldn't find index path");
-        
     } else {
-        MNCalendarViewDayCell *cell = (MNCalendarViewDayCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
         [self.delegate calendarView:self didLongPressDate:cell.date atIndex:indexPath];
     }
 }
@@ -335,7 +374,9 @@
     }
     else {cell.dotView.backgroundColor = [UIColor clearColor];}
   if (self.selectedDate && cell.enabled) {
+      
     [cell setSelected:[date isEqualToDate:self.selectedDate]];
+  
   }
   
   return cell;

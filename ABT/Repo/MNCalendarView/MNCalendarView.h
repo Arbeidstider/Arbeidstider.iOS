@@ -36,6 +36,8 @@
 - (void)reloadData;
 - (void)registerUICollectionViewClasses; 
 - (void)addDotWithColor:(UIColor*)color atIndexPath:(NSIndexPath*)indexPath;
+- (void)frameForPath:(NSIndexPath*)indexPath remove:(BOOL)remove;
+
 @end
 
 @protocol MNCalendarViewDelegate <NSObject>

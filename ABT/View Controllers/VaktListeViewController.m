@@ -13,22 +13,22 @@
 #import "MJDetailViewController.h"
 #import "AwesomeMenu.h"
 #import "DayDetailViewController.h"
-#import "JLActionSheet.h"
+#import "CalendarActionsheet.h"
 
-@interface VaktListeViewController () <MNCalendarViewDelegate,JLActionSheetDelegate>
+@interface VaktListeViewController () <MNCalendarViewDelegate,CalendarASDelegate>
 @property (nonatomic,strong) NSDateFormatter *dateFormatter;
 @property (nonatomic,weak) UIImageView *infoImage;
 @property (strong,nonatomic) MJDetailViewController *detailView;
 @property (strong,nonatomic) NSArray *awesomeMenuItems;
 @property (strong,nonatomic) MNCalendarView *calendarView;
-@property (strong,nonatomic) JLActionSheet *actionSheet;
 @property (retain) NSArray *sheetArray;
 @property NSString *actionSheetTitleString;
-@property NSIndexPath *selectedInteger;
+@property NSIndexPath *selectedIndexPath;
 @end
 
 @implementation VaktListeViewController
 @synthesize sheetArray = _sheetArray;
+#define kSheetAnimationTime 0.3f
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -52,15 +52,14 @@
     dispatch_once(&onceToken, ^{
         [SingleTon Views].VaktListeView = self;
     });
-
-    self.actionSheet = [JLActionSheet sheetWithTitle:@"Status..." delegate:self cancelButtonTitle:@"Avbryt" otherButtonTitles:[NSArray arrayWithObjects: @"Kan", @"Helst ikke", @"Kan ikke", nil]];
-    [self.actionSheet allowTapToDismiss:YES];
-    
 }
 -(void)makeTopBar{
     self.detailView = [[MJDetailViewController alloc]init];
+    
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
     headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
+    
+    
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"Vaktliste";
     titleLabel.textColor = [UIColor whiteColor];
@@ -68,6 +67,7 @@
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE];
     [headerView addSubview:titleLabel];
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self
                action:@selector(menuButtonPressed)
@@ -85,6 +85,8 @@
     [headerView addSubview:infoButton];
     [self.view addSubview:headerView];
 }
+
+
 -(void)infoPressed{
     [self presentPopupViewController:self.detailView animationType:MJPopupViewAnimationFade];
 }
@@ -96,49 +98,86 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-
-#pragma mark - JLActionSheet Delegates
--(void)actionSheet:(JLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"%ld",(long)buttonIndex);
-    switch (buttonIndex) {
-        case 3:
-            [self.calendarView addDotWithColor:[UIColor greenColor] atIndexPath:self.selectedInteger];
-            break;
-        case 2:
-            [self.calendarView addDotWithColor:[UIColor orangeColor] atIndexPath:self.selectedInteger];
-            break;
-        case 1:
-            [self.calendarView addDotWithColor:[UIColor redColor] atIndexPath:self.selectedInteger];
-            break;
-        case 0:
-            break;
-        default:
-            break;
+#pragma mark - Action sheet delegates
+-(void)actionSheet:(CalendarActionsheet*)sheet selected:(NSString *)selected{
+    
+    if ([selected isEqualToString:@"Cancel"]) {
+        
+    }
+    else if([selected isEqualToString:@"Yes"]){
+        [self.calendarView addDotWithColor:[UIColor greenColor] atIndexPath:self.selectedIndexPath];
+    }
+    else if([selected isEqualToString:@"Maybe"]){
+        [self.calendarView addDotWithColor:[UIColor orangeColor] atIndexPath:self.selectedIndexPath];
+    }
+    else if([selected isEqualToString:@"No"]){
+        [self.calendarView addDotWithColor:[UIColor redColor] atIndexPath:self.selectedIndexPath];
     }
     
+    [self showActionSheet:NO];
+
 }
--(void)actionSheet:(JLActionSheet *)actionSheet didDismissButtonAtIndex:(NSInteger)buttonIndex{
+-(void)showActionSheet:(BOOL)show {
     
+    BOOL didHidePrev = NO;
+    
+    for (CalendarActionsheet *actionSheet in self.view.subviews) {
+        if ([actionSheet isKindOfClass:CalendarActionsheet.class]) {
+                [UIView animateWithDuration:kSheetAnimationTime animations:^{
+                [self.calendarView frameForPath:self.selectedIndexPath remove:YES];
+                actionSheet.center = CGPointMake((self.view.frame.size.width/2),self.view.frame.size.height + actionSheet.frame.size.height);
+                } completion:^(BOOL finished){
+                    
+                    [actionSheet removeFromSuperview];
+                    if (!show) {
+                        
+                        return;
+                    }
+                }];
+            didHidePrev = YES;
+            break;
+            }
+        }
+    
+    if (show){
+        [self.calendarView frameForPath:self.selectedIndexPath remove:NO];
+        float delay = 0;
+        if (didHidePrev) {
+            delay = 0.3f;
+        }
+        
+        CalendarActionsheet *sheet = [[CalendarActionsheet alloc]initWithTitle:@"String"];
+        sheet.delegate = self;
+        sheet.center = CGPointMake((self.view.frame.size.width/2),self.view.frame.size.height + sheet.bounds.size.height/2);
+        [self.view addSubview:sheet];
+        [UIView animateWithDuration:kSheetAnimationTime delay:delay options:kNilOptions animations:^{
+            sheet.center = CGPointMake((self.view.frame.size.width/2),self.view.frame.size.height - sheet.bounds.size.height/2-20);
+        } completion:^(BOOL finished){}];}
 }
 
 
 #pragma mark - MNCalendar Delegates
 
 - (void)calendarView:(MNCalendarView *)calendarView didLongPressDate:(NSDate *)date atIndex:(NSIndexPath *)indexPath{
-    self.selectedInteger = indexPath;
-    [self.actionSheet showInView:self.view];
+    
+    if (indexPath == self.selectedIndexPath) {
+        return;
+    }
+    for (CalendarActionsheet *actionSheet in self.view.subviews) {
+        if ([actionSheet isKindOfClass:CalendarActionsheet.class]) {
+            [self.calendarView frameForPath:self.selectedIndexPath remove:YES];
+        }
+    }
+    
+    self.selectedIndexPath = indexPath;
+    [self showActionSheet:YES];
 }
 - (void)calendarView:(MNCalendarView *)calendarView didSelectDate:(NSDate *)date atIndex:(NSIndexPath *)indexPath{
-    
     [SingleTon Shifts].currentDate = date;
-    //[[SingleTon Views].SideView changeCenterPanel:@"DayDetail"];
+    
+    [self showActionSheet:NO];
+    
     [self presentPopupViewController:[[DayDetailViewController alloc]init] animationType:MJPopupViewAnimationSlideBottomTop];
-    [calendarView addDotWithColor:[UIColor blackColor] atIndexPath:indexPath];
-    
-    
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
@@ -168,8 +207,14 @@
 
 }
 -(void)dismissPopup{
-    NSLog(@"dismiss");
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
+    double delayInSeconds = 0.4f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
+
+    });
+    
 }
 
 

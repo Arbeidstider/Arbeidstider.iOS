@@ -28,12 +28,22 @@ NSString *const MNCalendarViewCellIdentifier = @"MNCalendarViewCellIdentifier";
 
 @implementation MNCalendarViewCell
 
+
+-(UIView *)circleWithColor:(UIColor *)color radius:(int)radius {
+    UIView *circle = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 2 * radius, 2 * radius)];
+    circle.backgroundColor = color;
+    circle.layer.cornerRadius = radius;
+    circle.layer.masksToBounds = YES;
+    return circle;
+}
+
 - (id)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
     self.backgroundColor = UIColor.whiteColor;
     self.contentView.backgroundColor = UIColor.clearColor;
-      self.dotView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, 5)];
-      [self addSubview:self.dotView];
+      self.dotView = [self circleWithColor:[UIColor clearColor] radius:3.5f];
+      self.dotView.center = CGPointMake(self.bounds.size.width/2, 5);
+    [self addSubview:self.dotView];
     self.titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
     self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.titleLabel.font = [UIFont systemFontOfSize:14.f];
@@ -42,7 +52,7 @@ NSString *const MNCalendarViewCellIdentifier = @"MNCalendarViewCellIdentifier";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.userInteractionEnabled = NO;
     self.titleLabel.backgroundColor = [UIColor clearColor];
-    
+      
     [self.contentView addSubview:self.titleLabel];
     
     self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];

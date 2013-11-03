@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     [self makeTopBar];
-    [SingleTon Shifts].PersonView = self;
+    [ABTData sharedData].PersonView = self;
     tier2array = [[NSMutableArray alloc]init];
     tier1array = [[NSMutableArray alloc]init];
     tier0array = [[NSMutableArray alloc]init];
@@ -59,9 +59,9 @@
         ABTPerson *person = [[ABTPerson alloc]initWithDict:dictionary];
         [mtbArray addObject:person];
     }
-    [SingleTon Shifts].allPersons = mtbArray;
+    [ABTData sharedData].allPersons = mtbArray;
     
-    for (ABTPerson *person in [SingleTon Shifts].allPersons) {
+    for (ABTPerson *person in [ABTData sharedData].allPersons) {
         if ([person.workerClass isEqualToString:@"0"]) {
             [tier0array addObject:person];
         }
@@ -148,7 +148,7 @@
     else if (sect == 2){
         person = [tier2array objectAtIndex:row];
     }
-    [SingleTon Shifts].currentPerson = person;
+    [ABTData sharedData].currentPerson = person;
     [self presentPopupViewController:[[ProfileViewController alloc]init] animationType:MJPopupViewAnimationSlideRightLeft];
     
 }
@@ -179,7 +179,7 @@
     
 }
 - (void)menuButtonPressed{
-    [[SingleTon Views].SideView showLeftView];
+    [self.sidePanelController showLeftPanelAnimated:YES];
 }
 -(void)dismissPopup{
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideLeftRight];

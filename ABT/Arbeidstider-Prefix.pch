@@ -12,13 +12,17 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+
 #import "AFFNManager.h"
 #import "AFFNImageManager.h"
 #import "UIImageView+AFFNImage.h"
-#import "SingleTon.h"
+#import "ABTData.h"
 #import "UIColor+ABTColors.h"
+#import "UIViewController+JASidePanel.h"
+
 #endif
 #define HEADER_HEIGHT 48
 #define HEADER_FONT_SIZE 30
 #define THIN @"HelveticaNeue-Thin"
 #define LIGHT @"HelveticaNeue-Light"
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]

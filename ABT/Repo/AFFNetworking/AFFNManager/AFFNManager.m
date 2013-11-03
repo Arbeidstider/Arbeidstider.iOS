@@ -36,7 +36,7 @@
 @synthesize networkOperations = _networkOperations;
 
 #pragma mark - Init
-//Singleton sharedManager method
+//ABTData sharedManager method
 + (AFFNManager *)sharedManager
 {
 

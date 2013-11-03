@@ -7,8 +7,13 @@
 //
 
 #import "OppslagViewController.h"
-#import "SingleTon.h"
-@interface OppslagViewController ()
+#import "ABTData.h"
+#import "OppslagContentCell.h"
+@interface OppslagViewController () <UITableViewDelegate,UITableViewDataSource>
+{
+    UITableView *oppslagTableView;
+    
+}
 
 @end
 
@@ -27,8 +32,7 @@
 {
     [super viewDidLoad];
     [self makeTopBar];
-
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,7 +40,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - Table View Delegate and DataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return arc4random()%50;
+}
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellID = @"OppslagContentCell";
+    OppslagContentCell* cell = (OppslagContentCell*)[tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[OppslagContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell.frame = CGRectMake(0, 0, 100, 100);
+    }
+    return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+
 -(void)makeTopBar{
+    
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
     headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
     UILabel *titleLabel = [[UILabel alloc] init];
@@ -58,6 +81,6 @@
     
 }
 - (void)menuButtonPressed{
-    [[SingleTon Views].SideView showLeftView];
+    [self.sidePanelController showLeftPanelAnimated:YES];
 }
 @end

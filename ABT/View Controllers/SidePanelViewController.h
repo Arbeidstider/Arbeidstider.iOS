@@ -9,6 +9,4 @@
 #import "JASidePanelController.h"
 
 @interface SidePanelViewController : JASidePanelController
--(void)changeCenterPanel:(NSString*)view;
--(void)showLeftView;
 @end

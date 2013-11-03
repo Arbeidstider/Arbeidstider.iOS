@@ -6,7 +6,7 @@
 //
 
 #import "FrontPageViewController.h"
-#import "SingleTon.h"
+#import "ABTData.h"
 
 @interface FrontPageViewController () <MZDayPickerDelegate,MZDayPickerDataSource>
 
@@ -62,8 +62,8 @@
         //NSLog(@"Resultdata %@",result.data);
         NSJSONSerialization *response = [NSJSONSerialization JSONObjectWithData:result.data options:NSJSONReadingAllowFragments error:&error];
         NSMutableArray *JSONArray = [NSJSONSerialization JSONObjectWithData:result.data options:kNilOptions error:&error];//her er json lagra
-        [SingleTon Shifts].shifts = JSONArray;
-        //NSLog(@"Singleton workdates = %@",[SingleTon Shifts].shifts);
+        [ABTData sharedData].shifts = JSONArray;
+        //NSLog(@"ABTData workdates = %@",[ABTData sharedData].shifts);
         
         for (NSDictionary *object in JSONArray) {
             NSString *string = [object objectForKey:@"ShiftEnd"];
@@ -127,7 +127,6 @@
      forControlEvents:UIControlEventTouchUpInside];
     [button setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     button.frame = CGRectMake(5.0, 5.0, 40.0, 40.0);
-    
     [headerView addSubview:button];
     [self.view addSubview:headerView];
     
@@ -135,7 +134,7 @@
 
 
 - (void)menuButtonPressed{
-    [[SingleTon Views].SideView showLeftView];
+    [self.sidePanelController showLeftPanelAnimated:YES];
 }
 - (void)didReceiveMemoryWarning
 {

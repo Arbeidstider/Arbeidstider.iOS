@@ -7,9 +7,9 @@
 //
 
 #import "DayDetailViewController.h"
-#import "SingleTon.h"
+#import "ABTData.h"
 #import "MJDetailViewController.h"
-@interface DayDetailViewController ()
+@interface DayDetailViewController () <UIGestureRecognizerDelegate>
 
 @end
 
@@ -28,16 +28,22 @@
 {
     [super viewDidLoad];
     [self makeTopBar];
-    self.view.backgroundColor = [UIColor whiteColor];
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    swipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
+    swipeGesture.delegate = self;
+    [self.view addGestureRecognizer:swipeGesture];
 }
-
+-(void)handleSwipe:(UISwipeGestureRecognizer*)swipe{
+    [self menuButtonPressed];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
 -(void)makeTopBar{
-    NSDate *date = [SingleTon Shifts].currentDate;
+    NSDate *date = [ABTData sharedData].currentDate;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
     dateFormatter.locale= [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages]objectAtIndex:0]];
@@ -78,7 +84,7 @@
                    action:@selector(menuButtonPressed)
          forControlEvents:UIControlEventTouchUpInside];
     [doneButton setImage:[UIImage imageNamed:@"doneIcon.png"] forState:UIControlStateNormal];
-    doneButton.frame = CGRectMake(270.0, 5.0, 45.0, 40.0);
+    doneButton.frame = CGRectMake(self.view.bounds.size.width-55, 5.0, 45.0, 40.0);
     [headerView addSubview:doneButton];
     
     [self.view addSubview:headerView];
@@ -86,7 +92,7 @@
 
 
 - (void)menuButtonPressed{
-    [[SingleTon Views].VaktListeView dismissPopup];
+    [[ABTData sharedData].VaktListeView dismissPopup];
 }
 
 @end

@@ -36,6 +36,7 @@
 		084AA97A17FD85DD00FD3B5A /* ABTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 084AA97917FD85DD00FD3B5A /* ABTPerson.m */; };
 		084AA97E17FD943F00FD3B5A /* json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 084AA97D17FD943F00FD3B5A /* json.txt */; };
 		084AA98017FDA5B800FD3B5A /* doneIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 084AA97F17FDA5B800FD3B5A /* doneIcon.png */; };
+		084FDA63181A8F4700C87620 /* WastedLogLines.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 084FDA62181A8F4600C87620 /* WastedLogLines.rtf */; };
 		086B552617F0960900D9CC67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B552517F0960900D9CC67 /* Foundation.framework */; };
 		086B552817F0960900D9CC67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B552717F0960900D9CC67 /* CoreGraphics.framework */; };
 		086B552A17F0960900D9CC67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B552917F0960900D9CC67 /* UIKit.framework */; };
@@ -96,9 +97,10 @@
 		086B55EE17F0AA2100D9CC67 /* penger.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55BD17F0AA2100D9CC67 /* penger.png */; };
 		086B55EF17F0AA2100D9CC67 /* personer.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55BE17F0AA2100D9CC67 /* personer.png */; };
 		086B55F017F0AA2100D9CC67 /* vakter.png in Resources */ = {isa = PBXBuildFile; fileRef = 086B55BF17F0AA2100D9CC67 /* vakter.png */; };
-		086B55F417F0AB4100D9CC67 /* SingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B55F317F0AB4100D9CC67 /* SingleTon.m */; };
+		086B55F417F0AB4100D9CC67 /* ABTData.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B55F317F0AB4100D9CC67 /* ABTData.m */; };
 		086B55F617F0AB7C00D9CC67 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B55F517F0AB7C00D9CC67 /* QuartzCore.framework */; };
 		086C74F61808077900373601 /* UIColor+ABTColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 086C74F51808077900373601 /* UIColor+ABTColors.m */; };
+		08EF40D5182138BD002A06D8 /* OppslagContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EF40D4182138BD002A06D8 /* OppslagContentCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,7 @@
 		084AA97917FD85DD00FD3B5A /* ABTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTPerson.m; sourceTree = "<group>"; };
 		084AA97D17FD943F00FD3B5A /* json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.txt; sourceTree = "<group>"; };
 		084AA97F17FDA5B800FD3B5A /* doneIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneIcon.png; sourceTree = "<group>"; };
+		084FDA62181A8F4600C87620 /* WastedLogLines.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = WastedLogLines.rtf; path = Misc/WastedLogLines.rtf; sourceTree = "<group>"; };
 		086B552217F0960900D9CC67 /* Arbeidstider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arbeidstider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		086B552517F0960900D9CC67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		086B552717F0960900D9CC67 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -243,11 +246,13 @@
 		086B55BD17F0AA2100D9CC67 /* penger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penger.png; sourceTree = "<group>"; };
 		086B55BE17F0AA2100D9CC67 /* personer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personer.png; sourceTree = "<group>"; };
 		086B55BF17F0AA2100D9CC67 /* vakter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vakter.png; sourceTree = "<group>"; };
-		086B55F217F0AB4100D9CC67 /* SingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTon.h; sourceTree = "<group>"; };
-		086B55F317F0AB4100D9CC67 /* SingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTon.m; sourceTree = "<group>"; };
+		086B55F217F0AB4100D9CC67 /* ABTData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTData.h; sourceTree = "<group>"; };
+		086B55F317F0AB4100D9CC67 /* ABTData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTData.m; sourceTree = "<group>"; };
 		086B55F517F0AB7C00D9CC67 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		086C74F41808077900373601 /* UIColor+ABTColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+ABTColors.h"; path = "Extensions/UIColor+ABTColors.h"; sourceTree = "<group>"; };
 		086C74F51808077900373601 /* UIColor+ABTColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ABTColors.m"; path = "Extensions/UIColor+ABTColors.m"; sourceTree = "<group>"; };
+		08EF40D3182138BD002A06D8 /* OppslagContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OppslagContentCell.h; sourceTree = "<group>"; };
+		08EF40D4182138BD002A06D8 /* OppslagContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OppslagContentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +313,8 @@
 			children = (
 				086B556617F0AA2100D9CC67 /* OppslagViewController.h */,
 				086B556717F0AA2100D9CC67 /* OppslagViewController.m */,
+				08EF40D3182138BD002A06D8 /* OppslagContentCell.h */,
+				08EF40D4182138BD002A06D8 /* OppslagContentCell.m */,
 			);
 			name = Oppslag;
 			sourceTree = "<group>";
@@ -394,6 +401,7 @@
 				086B552E17F0960900D9CC67 /* InfoPlist.strings */,
 				086B553117F0960900D9CC67 /* main.m */,
 				086B553317F0960900D9CC67 /* Arbeidstider-Prefix.pch */,
+				084FDA62181A8F4600C87620 /* WastedLogLines.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -433,8 +441,8 @@
 		086B556E17F0AA2100D9CC67 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				086B55F217F0AB4100D9CC67 /* SingleTon.h */,
-				086B55F317F0AB4100D9CC67 /* SingleTon.m */,
+				086B55F217F0AB4100D9CC67 /* ABTData.h */,
+				086B55F317F0AB4100D9CC67 /* ABTData.m */,
 				084AA97817FD85DD00FD3B5A /* ABTPerson.h */,
 				084AA97917FD85DD00FD3B5A /* ABTPerson.m */,
 				08252E5C180D71B8000AD875 /* ABTMenuCell.h */,
@@ -767,6 +775,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08252E6B180DD4CE000AD875 /* MenuCellDeselected.png in Resources */,
+				084FDA63181A8F4700C87620 /* WastedLogLines.rtf in Resources */,
 				086B55EE17F0AA2100D9CC67 /* penger.png in Resources */,
 				0805E04717FB185000B464D6 /* Icon-76.png in Resources */,
 				0805E04817FB185000B464D6 /* Icon-Med-40.png in Resources */,
@@ -832,7 +841,7 @@
 				086B55CA17F0AA2100D9CC67 /* UIImageView+AFFNImage.m in Sources */,
 				086B55CC17F0AA2100D9CC67 /* AFFNRequest.m in Sources */,
 				086B55DD17F0AA2100D9CC67 /* NSDate+MNAdditions.m in Sources */,
-				086B55F417F0AB4100D9CC67 /* SingleTon.m in Sources */,
+				086B55F417F0AB4100D9CC67 /* ABTData.m in Sources */,
 				086B55D917F0AA2100D9CC67 /* MNCalendarViewDayCell.m in Sources */,
 				086B55DE17F0AA2100D9CC67 /* MZDay.m in Sources */,
 				086B55C917F0AA2100D9CC67 /* AFFNImageManager.m in Sources */,
@@ -844,6 +853,7 @@
 				08136FF318110E8800B6F4CF /* CalendarActionsheet.m in Sources */,
 				086B55D517F0AA2100D9CC67 /* UIViewController+MJPopupViewController.m in Sources */,
 				08252E5A180D618C000AD875 /* DayDetailViewController.m in Sources */,
+				08EF40D5182138BD002A06D8 /* OppslagContentCell.m in Sources */,
 				08252E61180D71E2000AD875 /* PengerViewController.m in Sources */,
 				086B553617F0960900D9CC67 /* ABTAppDelegate.m in Sources */,
 				086B55E017F0AA2100D9CC67 /* MZDayPickerCell.m in Sources */,

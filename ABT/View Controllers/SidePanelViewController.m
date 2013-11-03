@@ -7,7 +7,7 @@
 //
 
 #import "SidePanelViewController.h"
-#import "SingleTon.h"
+#import "ABTData.h"
 @interface SidePanelViewController ()
 
 @end
@@ -26,10 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [SingleTon Views].SideView = self;
-    });
+   
 	// Do any additional setup after loading the view.
 }
 
@@ -38,16 +35,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)showLeftView{
-    [self showLeftPanelAnimated:YES];
-}
+
 -(void) awakeFromNib
 {
     [self setLeftPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"leftViewController"]];
     [self setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"Forside"]];
 }
--(void)changeCenterPanel:(NSString *)view{
-    
-    [self setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:view]];
-}
+
 @end

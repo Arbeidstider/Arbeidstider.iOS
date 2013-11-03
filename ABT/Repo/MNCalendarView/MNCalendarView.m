@@ -13,7 +13,7 @@
 #import "MNCalendarHeaderView.h"
 #import "MNFastDateEnumeration.h"
 #import "NSDate+MNAdditions.h"
-#import "SingleTon.h"
+#import "ABTData.h"
 
 @interface MNCalendarView() <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -87,34 +87,9 @@
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
     
-    //if (gestureRecognizer.state != UIGestureRecognizerStateRecognized) {
-    //    return;
-    //}
-    
-    switch (gestureRecognizer.state) {
-        case UIGestureRecognizerStateBegan:
-            break;
-        case UIGestureRecognizerStateCancelled:
-            return;
-            break;
-        case UIGestureRecognizerStateRecognized:
-            return;
-            break;
-        case UIGestureRecognizerStatePossible:
-            return;
-            break;
-        case UIGestureRecognizerStateFailed:
-            return;
-            break;
-        case UIGestureRecognizerStateChanged:
-            return;
-            break;
-        default:
-            break;
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
+        return;
     }
-    
-    
-    
     
     CGPoint p = [gestureRecognizer locationInView:self.collectionView];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
@@ -342,7 +317,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
     //NSString *todayString = [[NSString alloc]initWithFormat:@"%@",[formatter stringFromDate:cell.date]];
-    for (NSDictionary *dictionary in [SingleTon Shifts].shifts) {
+    for (NSDictionary *dictionary in [ABTData sharedData].shifts) {
         NSString *shiftStart = [dictionary objectForKey:@"ShiftStart"];
         shiftStart = shiftStart;
         /*NSString *date = [[NSString alloc]initWithFormat:@"%@.%@.%@",

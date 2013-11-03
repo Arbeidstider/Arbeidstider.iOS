@@ -7,7 +7,7 @@
 //
 
 #import "VaktListeViewController.h"
-#import "SingleTon.h"
+#import "ABTData.h"
 #import "MNCalendarView.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "MJDetailViewController.h"
@@ -50,7 +50,7 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [SingleTon Views].VaktListeView = self;
+        [ABTData sharedData].VaktListeView = self;
     });
 }
 -(void)makeTopBar{
@@ -91,7 +91,7 @@
     [self presentPopupViewController:self.detailView animationType:MJPopupViewAnimationFade];
 }
 -(void)menuButtonPressed{
-    [[SingleTon Views].SideView showLeftView];
+    [self.sidePanelController showLeftPanelAnimated:YES];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -120,17 +120,16 @@
 -(void)showActionSheet:(BOOL)show {
     
     BOOL didHidePrev = NO;
-    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+
     for (CalendarActionsheet *actionSheet in self.view.subviews) {
         if ([actionSheet isKindOfClass:CalendarActionsheet.class]) {
                 [UIView animateWithDuration:kSheetAnimationTime animations:^{
                 [self.calendarView frameForPath:self.selectedIndexPath remove:YES];
-                actionSheet.center = CGPointMake((self.view.frame.size.width/2),self.view.frame.size.height + actionSheet.frame.size.height);
+                actionSheet.center = CGPointMake((screenRect.size.width/2),screenRect.size.height + actionSheet.bounds.size.height);
                 } completion:^(BOOL finished){
-                    
                     [actionSheet removeFromSuperview];
                     if (!show) {
-                        
                         return;
                     }
                 }];
@@ -138,8 +137,9 @@
             break;
             }
         }
-    
     if (show){
+
+        
         [self.calendarView frameForPath:self.selectedIndexPath remove:NO];
         float delay = 0;
         if (didHidePrev) {
@@ -148,10 +148,11 @@
         
         CalendarActionsheet *sheet = [[CalendarActionsheet alloc]initWithTitle:@"String"];
         sheet.delegate = self;
-        sheet.center = CGPointMake((self.view.frame.size.width/2),self.view.frame.size.height + sheet.bounds.size.height/2);
+        sheet.center = CGPointMake((screenRect.size.width/2),screenRect.size.height + sheet.bounds.size.height/2);
         [self.view addSubview:sheet];
+        
         [UIView animateWithDuration:kSheetAnimationTime delay:delay options:kNilOptions animations:^{
-            sheet.center = CGPointMake((self.view.frame.size.width/2),self.view.frame.size.height - sheet.bounds.size.height/2-20);
+            sheet.center = CGPointMake((screenRect.size.width/2),screenRect.size.height - sheet.bounds.size.height/2-20);
         } completion:^(BOOL finished){}];}
 }
 
@@ -173,7 +174,7 @@
     [self showActionSheet:YES];
 }
 - (void)calendarView:(MNCalendarView *)calendarView didSelectDate:(NSDate *)date atIndex:(NSIndexPath *)indexPath{
-    [SingleTon Shifts].currentDate = date;
+    [ABTData sharedData].currentDate = date;
     
     [self showActionSheet:NO];
     

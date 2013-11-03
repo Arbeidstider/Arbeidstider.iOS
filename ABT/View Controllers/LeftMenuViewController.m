@@ -8,7 +8,7 @@
 
 #import "LeftMenuViewController.h"
 #import "SidePanelViewController.h"
-#import "SingleTon.h"
+#import "ABTData.h"
 #import "ABTMenuCell.h"
 @interface LeftMenuViewController ()
 {
@@ -68,13 +68,13 @@
 #pragma mark - Table View Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;    //count of section
+    return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _viewsArray.count;    //count number of row from counting array hear cataGorry is An Array
+    return _viewsArray.count;
 }
 
 
@@ -102,7 +102,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[SingleTon Views].SideView changeCenterPanel:[_viewsArray objectAtIndex:indexPath.row]];
+[self.sidePanelController setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:[_viewsArray objectAtIndex:indexPath.row]]];
 }
 
 @end

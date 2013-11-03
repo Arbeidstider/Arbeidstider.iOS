@@ -7,7 +7,7 @@
 //
 
 #import "InnstillingerViewController.h"
-#import "SingleTon.h"
+#import "ABTData.h"
 @interface InnstillingerViewController ()
 
 @end
@@ -56,6 +56,6 @@
     [self.view addSubview:headerView];
 }
 - (void)menuButtonPressed{
-    [[SingleTon Views].SideView showLeftView];
+    [self.sidePanelController showLeftPanelAnimated:YES];
 }
 @end

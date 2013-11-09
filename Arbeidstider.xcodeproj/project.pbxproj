@@ -33,6 +33,7 @@
 		08252E67180D7313000AD875 /* ABTMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08252E66180D7313000AD875 /* ABTMenuCell.xib */; };
 		08252E6A180DD4CE000AD875 /* MenuCellSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 08252E68180DD4CE000AD875 /* MenuCellSelected.png */; };
 		08252E6B180DD4CE000AD875 /* MenuCellDeselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 08252E69180DD4CE000AD875 /* MenuCellDeselected.png */; };
+		08456FC2182689F800A9311C /* oppslag.json in Resources */ = {isa = PBXBuildFile; fileRef = 08456FC1182689F800A9311C /* oppslag.json */; };
 		084AA97A17FD85DD00FD3B5A /* ABTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 084AA97917FD85DD00FD3B5A /* ABTPerson.m */; };
 		084AA97E17FD943F00FD3B5A /* json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 084AA97D17FD943F00FD3B5A /* json.txt */; };
 		084AA98017FDA5B800FD3B5A /* doneIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 084AA97F17FDA5B800FD3B5A /* doneIcon.png */; };
@@ -100,6 +101,7 @@
 		086B55F417F0AB4100D9CC67 /* ABTData.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B55F317F0AB4100D9CC67 /* ABTData.m */; };
 		086B55F617F0AB7C00D9CC67 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B55F517F0AB7C00D9CC67 /* QuartzCore.framework */; };
 		086C74F61808077900373601 /* UIColor+ABTColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 086C74F51808077900373601 /* UIColor+ABTColors.m */; };
+		08C769E21826A8C000721378 /* OppslagContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C769E11826A8C000721378 /* OppslagContentCell.xib */; };
 		08EF40D5182138BD002A06D8 /* OppslagContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EF40D4182138BD002A06D8 /* OppslagContentCell.m */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,7 @@
 		08252E66180D7313000AD875 /* ABTMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ABTMenuCell.xib; sourceTree = "<group>"; };
 		08252E68180DD4CE000AD875 /* MenuCellSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuCellSelected.png; sourceTree = "<group>"; };
 		08252E69180DD4CE000AD875 /* MenuCellDeselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuCellDeselected.png; sourceTree = "<group>"; };
+		08456FC1182689F800A9311C /* oppslag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = oppslag.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		084AA97817FD85DD00FD3B5A /* ABTPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTPerson.h; sourceTree = "<group>"; };
 		084AA97917FD85DD00FD3B5A /* ABTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTPerson.m; sourceTree = "<group>"; };
 		084AA97D17FD943F00FD3B5A /* json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.txt; sourceTree = "<group>"; };
@@ -251,6 +254,7 @@
 		086B55F517F0AB7C00D9CC67 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		086C74F41808077900373601 /* UIColor+ABTColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+ABTColors.h"; path = "Extensions/UIColor+ABTColors.h"; sourceTree = "<group>"; };
 		086C74F51808077900373601 /* UIColor+ABTColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ABTColors.m"; path = "Extensions/UIColor+ABTColors.m"; sourceTree = "<group>"; };
+		08C769E11826A8C000721378 /* OppslagContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OppslagContentCell.xib; sourceTree = "<group>"; };
 		08EF40D3182138BD002A06D8 /* OppslagContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OppslagContentCell.h; sourceTree = "<group>"; };
 		08EF40D4182138BD002A06D8 /* OppslagContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OppslagContentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -315,6 +319,7 @@
 				086B556717F0AA2100D9CC67 /* OppslagViewController.m */,
 				08EF40D3182138BD002A06D8 /* OppslagContentCell.h */,
 				08EF40D4182138BD002A06D8 /* OppslagContentCell.m */,
+				08C769E11826A8C000721378 /* OppslagContentCell.xib */,
 			);
 			name = Oppslag;
 			sourceTree = "<group>";
@@ -592,6 +597,7 @@
 		086B55AC17F0AA2100D9CC67 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				08456FC1182689F800A9311C /* oppslag.json */,
 				08136FFE1811491900B6F4CF /* Calendar */,
 				084AA97D17FD943F00FD3B5A /* json.txt */,
 				0805E03517FB185000B464D6 /* Icons */,
@@ -800,7 +806,9 @@
 				08252E56180D5E14000AD875 /* ProfileViewController.xib in Resources */,
 				086B55E617F0AA2100D9CC67 /* menuItemPurp.png in Resources */,
 				086B55EA17F0AA2100D9CC67 /* frontpage.png in Resources */,
+				08456FC2182689F800A9311C /* oppslag.json in Resources */,
 				086B55EB17F0AA2100D9CC67 /* innstillinger.png in Resources */,
+				08C769E21826A8C000721378 /* OppslagContentCell.xib in Resources */,
 				08252E6A180DD4CE000AD875 /* MenuCellSelected.png in Resources */,
 				0805E04317FB185000B464D6 /* Icon-120.png in Resources */,
 				0805E04517FB185000B464D6 /* Icon-152.png in Resources */,

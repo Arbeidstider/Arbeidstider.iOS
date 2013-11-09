@@ -10,4 +10,9 @@
 
 @interface OppslagContentCell : UITableViewCell
 
+@property (weak,nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak,nonatomic) IBOutlet UILabel *contentText;
+@property (weak,nonatomic) IBOutlet UILabel *timeStamp;
+@property (weak,nonatomic) IBOutlet UIImageView *profilePicture;
+
 @end

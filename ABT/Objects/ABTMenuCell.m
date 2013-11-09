@@ -28,7 +28,6 @@
         view.backgroundColor = [UIColor whiteColor];
         self.selectedBackgroundView = view;
     }
-    
     // Configure the view for the selected state
 }
 

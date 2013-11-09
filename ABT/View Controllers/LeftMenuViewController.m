@@ -39,7 +39,9 @@
 {
     [super viewDidLoad];
     self.menuTableView.alwaysBounceVertical = NO;
+    
     _viewsArray = [[NSArray alloc]initWithObjects:@"Forside",@"Dine Vakter",@"Oppslag",@"Personer",@"Penger",@"Innstillinger", nil];
+    
     _imagesArray = [[NSArray alloc]initWithObjects:@"frontpage.png",@"vakter.png",@"oppslag.png",@"personer",@"penger.png",@"innstillinger.png",nil];
     self.menuTableView.backgroundColor = [UIColor colorWithRed:244.0/255 green:244.0/255 blue:244.0/255 alpha:1.0];
     self.menuTableView.frame = CGRectMake(0, HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
@@ -58,7 +60,6 @@
     
 }
 -(void)footerPressed{
-    NSLog(@"footer pressed");
 }
 - (void)didReceiveMemoryWarning
 {

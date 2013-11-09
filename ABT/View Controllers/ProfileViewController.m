@@ -46,6 +46,7 @@
 	// Do any additional setup after loading the view.
 }
 -(void)makeTopBar{
+    
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
     headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
     UILabel *titleLabel = [[UILabel alloc] init];

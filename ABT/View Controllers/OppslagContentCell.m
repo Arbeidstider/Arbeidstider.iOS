@@ -14,12 +14,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.frame = CGRectMake(0, 0, 100, 200);
         
-        UIView *testView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 200)];
-        testView.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:testView];
-
     }
     return self;
 }
@@ -28,7 +23,6 @@
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 @end

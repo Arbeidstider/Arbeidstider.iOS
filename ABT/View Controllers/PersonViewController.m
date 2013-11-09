@@ -49,7 +49,7 @@
     
     
     NSString* pathToFile = [[NSBundle mainBundle] pathForResource:@"json" ofType: @"txt"];
-    NSString *file = [[NSString alloc] initWithContentsOfFile:pathToFile encoding:  NSUTF8StringEncoding error:NULL];
+    NSString *file = [[NSString alloc] initWithContentsOfFile:pathToFile encoding:NSUTF8StringEncoding error:NULL];
     NSData *jsonData = [file dataUsingEncoding:NSUTF8StringEncoding];
     NSError *e;
     NSArray *array = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&e];

@@ -8,18 +8,18 @@
 #import "FrontPageViewController.h"
 #import "ABTData.h"
 
-@interface FrontPageViewController () <MZDayPickerDelegate,MZDayPickerDataSource>
+@interface FrontPageViewController () <MZDayPickerDelegate,MZDayPickerDataSource,UIScrollViewDelegate>
 
 
 @property (nonatomic,strong) NSDateFormatter *dateFormatter;
-@property (weak, nonatomic) IBOutlet UILabel *selectedLabel;
 @property (weak, nonatomic) IBOutlet MZDayPicker *dayPicker;
-@property (strong,nonatomic)NSMutableDictionary *params;
-
+@property (strong,nonatomic) NSMutableDictionary *params;
+@property (strong) IBOutlet UIScrollView *timeLineScrollView;
+@property CGSize screen;
 @end
 
 @implementation FrontPageViewController
-
+@synthesize screen;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,25 +28,38 @@
     }
     return self;
 }
+-(void)viewWillAppear:(BOOL)animated{
+}
 
+-(void)viewWillLayoutSubviews{
+    screen = self.view.bounds.size;
+   
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (screen.height < self.timeLineScrollView.frame.size.height) {
+        self.timeLineScrollView.bounds = CGRectMake(0, 0, 320, 370);
+    }
+    self.timeLineScrollView.delegate = self;
+    self.timeLineScrollView.contentSize=CGSizeMake((self.timeLineScrollView.zoomScale*13)*24, self.timeLineScrollView.bounds.size.height);
+    self.timeLineScrollView.contentSize = CGSizeMake(1000, self.timeLineScrollView.bounds.size.height);
+    self.timeLineScrollView.minimumZoomScale=1.0;
+    self.timeLineScrollView.maximumZoomScale=10.0;
+    self.timeLineScrollView.zoomScale = 5.0;
     
-    
-    
+    self.timeLineScrollView.backgroundColor = [UIColor redColor];
     // MZDAYPICKER SETUP
-    self.selectedLabel.font = [UIFont fontWithName:THIN size:17.0f];
-    
+    self.dayPicker.hidden = NO;
     self.dayPicker.delegate = self;
     self.dayPicker.dataSource = self;
-    self.dayPicker.month = 9;
+    self.dayPicker.month = 11;
     self.dayPicker.year = 2013;
     self.dayPicker.dayNameLabelFontSize = 12.0f;
-    
     self.dayPicker.dayLabelFontSize = 18.0f;    
-    [self.dayPicker setStartDate:[NSDate dateFromDay:1 month:9 year:2013] endDate:[NSDate dateFromDay:31 month:10 year:2013]];
+    [self.dayPicker setStartDate:[NSDate dateFromDay:1 month:9 year:2013] endDate:[NSDate dateFromDay:31 month:12 year:2013]];
     [self.dayPicker setCurrentDate:[NSDate date] animated:YES];
+    
     [self makeTopBar];
     
     //Bra, stabil thirdpartyløsning
@@ -54,7 +67,8 @@
     [self.params setObject:@"7" forKey:@"employeeID"];
     [self.params setObject:@"2013-09-13" forKey:@"startDate"];
     [self.params setObject:@"2013-09-30" forKey:@"endDate"];
-    
+
+
     AFFNRequest *request = [AFFNRequest requestWithConnectionType:kAFFNGet andURL:@"http://services.arbeidstider.no/TimeSheetService/GetAllTimeSheets" andParams:_params withCompletion:^(AFFNCallbackObject *result){
         //Callback block for completion
         
@@ -80,12 +94,12 @@
         NSLog(@"Error: %@",error);
         
     }];
-    
-    [[AFFNManager sharedManager] addNetworkOperation:request];
+    request = nil;
+    //[[AFFNManager sharedManager] addNetworkOperation:request];
 }
 -(NSString*)convertDateToName:(NSDate*)date{
     
-    NSString *returnstring = [[NSString alloc]init];
+    NSString *returnString = [[NSString alloc]init];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale= [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages]objectAtIndex:0]];
@@ -103,11 +117,12 @@
         NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];
         NSString *suffix = [suffixes objectAtIndex:date_day];
         NSString *dateString = [prefixDateString stringByAppendingString:suffix];
-        returnstring = dateString;
-    }else
-    {returnstring = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:date]];}//Norsk return
+        returnString = dateString;
+    }else{
+        returnString = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:date]];
+    }//Norsk return
     
-    return returnstring;
+    return returnString;
 }
 
 -(void)makeTopBar{
@@ -131,29 +146,49 @@
     [self.view addSubview:headerView];
     
 }
-
-
 - (void)menuButtonPressed{
     [self.sidePanelController showLeftPanelAnimated:YES];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+#pragma mark - ScrollViewDelegate
 
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view{
+    
+}
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
+    NSLog(@"End:Scale %f",scale);
+}
+- (CGRect)zoomRectForScrollView:(UIScrollView *)scrollView withScale:(float)scale withCenter:(CGPoint)center {
+    
+    CGRect zoomRect;
+    
+    // The zoom rect is in the content view's coordinates.
+    // At a zoom scale of 1.0, it would be the size of the
+    // imageScrollView's bounds.
+    // As the zoom scale decreases, so more content is visible,
+    // the size of the rect grows.
+    zoomRect.size.height = scrollView.frame.size.height / scale;
+    zoomRect.size.width  = scrollView.frame.size.width  / scale;
+    
+    // choose an origin so as to get the right center.
+    zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
+    zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
+    NSLog(@"%@",NSStringFromCGRect(zoomRect));
+    return zoomRect;
+
+}
 #pragma mark - Daypickerdelegate
 - (void)dayPicker:(MZDayPicker *)dayPicker willSelectDay:(MZDay *)day
 {
+    
 }
 
 - (void)dayPicker:(MZDayPicker *)dayPicker didSelectDay:(MZDay *)day
 {
-    NSDate *date = day.date;
     ////////////////
-    self.selectedLabel.text = [self convertDateToName:date];
-  
-    
 }
 
 @end

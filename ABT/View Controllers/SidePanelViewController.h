@@ -9,4 +9,5 @@
 #import "JASidePanelController.h"
 
 @interface SidePanelViewController : JASidePanelController
+
 @end

@@ -34,7 +34,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self makeTopBar];
     
     ABTPerson *person = [ABTData sharedData].currentPerson;
     self.nameLabel.text = person.name;
@@ -45,36 +44,7 @@
     
 	// Do any additional setup after loading the view.
 }
--(void)makeTopBar{
-    
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
-    headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = [ABTData sharedData].currentPerson.name;
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.frame = CGRectMake(0, 0, self.view.bounds.size.width, HEADER_HEIGHT);
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE];
-    if (titleLabel.text.length > 15) {
-        titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE-10];
-    }
-    [headerView addSubview:titleLabel];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(menuButtonPressed)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"doneIcon.png"] forState:UIControlStateNormal];
-    button.frame =CGRectMake(270.0, 5.0, 45.0, 40.0);
-    
-    [headerView addSubview:button];
-    [headerView bringSubviewToFront:button];
-    [self.view addSubview:headerView];
-    
-}
-- (void)menuButtonPressed{
-    [[ABTData sharedData].PersonView dismissPopup];
-    
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

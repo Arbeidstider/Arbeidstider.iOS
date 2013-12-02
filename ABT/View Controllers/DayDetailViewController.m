@@ -27,21 +27,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self makeTopBar];
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     swipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
     swipeGesture.delegate = self;
     [self.view addGestureRecognizer:swipeGesture];
 }
 -(void)handleSwipe:(UISwipeGestureRecognizer*)swipe{
-    [self menuButtonPressed];
     
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
+/*
 -(void)makeTopBar{
     NSDate *date = [ABTData sharedData].currentDate;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -89,10 +87,7 @@
     
     [self.view addSubview:headerView];
 }
+*/
 
-
-- (void)menuButtonPressed{
-    [[ABTData sharedData].VaktListeView dismissPopup];
-}
 
 @end

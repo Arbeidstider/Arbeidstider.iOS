@@ -14,7 +14,7 @@
 @property (nonatomic,strong) NSDateFormatter *dateFormatter;
 @property (weak, nonatomic) IBOutlet MZDayPicker *dayPicker;
 @property (strong,nonatomic) NSMutableDictionary *params;
-@property (strong) IBOutlet UIScrollView *timeLineScrollView;
+@property (strong) UIScrollView *timeLineScrollView;
 @property CGSize screen;
 @end
 
@@ -33,22 +33,23 @@
 
 -(void)viewWillLayoutSubviews{
     screen = self.view.bounds.size;
-   
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (screen.height < self.timeLineScrollView.frame.size.height) {
-        self.timeLineScrollView.bounds = CGRectMake(0, 0, 320, 370);
-    }
+    
+    self.timeLineScrollView.frame = CGRectMake(0, 65, 320, 500);
+    [self.view addSubview:self.timeLineScrollView];
     self.timeLineScrollView.delegate = self;
     self.timeLineScrollView.contentSize=CGSizeMake((self.timeLineScrollView.zoomScale*13)*24, self.timeLineScrollView.bounds.size.height);
-    self.timeLineScrollView.contentSize = CGSizeMake(1000, self.timeLineScrollView.bounds.size.height);
+    self.timeLineScrollView.contentSize = CGSizeMake(10000,10000);
+    [self.timeLineScrollView addSubview:[[UIView alloc]initWithFrame:CGRectMake(0, 0, 2000, 2000)]];
     self.timeLineScrollView.minimumZoomScale=1.0;
     self.timeLineScrollView.maximumZoomScale=10.0;
     self.timeLineScrollView.zoomScale = 5.0;
-    
     self.timeLineScrollView.backgroundColor = [UIColor redColor];
+    
+    
     // MZDAYPICKER SETUP
     self.dayPicker.hidden = NO;
     self.dayPicker.delegate = self;
@@ -59,15 +60,13 @@
     self.dayPicker.dayLabelFontSize = 18.0f;    
     [self.dayPicker setStartDate:[NSDate dateFromDay:1 month:9 year:2013] endDate:[NSDate dateFromDay:31 month:12 year:2013]];
     [self.dayPicker setCurrentDate:[NSDate date] animated:YES];
-    
-    [self makeTopBar];
+   
     
     //Bra, stabil thirdpartyløsning
     self.params = [[NSMutableDictionary alloc]init];
     [self.params setObject:@"7" forKey:@"employeeID"];
     [self.params setObject:@"2013-09-13" forKey:@"startDate"];
     [self.params setObject:@"2013-09-30" forKey:@"endDate"];
-
 
     AFFNRequest *request = [AFFNRequest requestWithConnectionType:kAFFNGet andURL:@"http://services.arbeidstider.no/TimeSheetService/GetAllTimeSheets" andParams:_params withCompletion:^(AFFNCallbackObject *result){
         //Callback block for completion
@@ -125,44 +124,22 @@
     return returnString;
 }
 
--(void)makeTopBar{
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
-    headerView.backgroundColor = [UIColor headerColor];
-    
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"Forside";
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.frame = CGRectMake(0, 0, self.view.bounds.size.width, HEADER_HEIGHT);
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE];
-    [headerView addSubview:titleLabel];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(menuButtonPressed)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    button.frame = CGRectMake(5.0, 5.0, 40.0, 40.0);
-    [headerView addSubview:button];
-    [self.view addSubview:headerView];
-    
-}
-- (void)menuButtonPressed{
-    [self.sidePanelController showLeftPanelAnimated:YES];
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 #pragma mark - ScrollViewDelegate
-
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return [[UIView alloc]initWithFrame:CGRectMake(0, 0, 1000, 1000)];
+}
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view{
-    
+    NSLog(@"began zooming");
 }
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
     NSLog(@"End:Scale %f",scale);
 }
 - (CGRect)zoomRectForScrollView:(UIScrollView *)scrollView withScale:(float)scale withCenter:(CGPoint)center {
-    
     CGRect zoomRect;
     
     // The zoom rect is in the content view's coordinates.
@@ -176,7 +153,6 @@
     // choose an origin so as to get the right center.
     zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
     zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
-    NSLog(@"%@",NSStringFromCGRect(zoomRect));
     return zoomRect;
 
 }

@@ -12,12 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
-        
-        [application setStatusBarStyle:UIStatusBarStyleLightContent];
-        self.window.clipsToBounds =YES;
-        self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
-    }
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
         // app already launched

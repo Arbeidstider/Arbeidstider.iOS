@@ -10,21 +10,20 @@
 #import "SidePanelViewController.h"
 #import "ABTData.h"
 #import "ABTMenuCell.h"
+
 @interface LeftMenuViewController ()
 {
     
 }
 
-@property (strong) IBOutlet UITableView *menuTableView;
 @property (retain) NSArray *viewsArray;
 @property (retain) NSArray *imagesArray;
+@property NSMutableArray *allControls;
 
 @end
 
 @implementation LeftMenuViewController
--(BOOL)prefersStatusBarHidden{
-    return YES;
-}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,72 +37,210 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.menuTableView.alwaysBounceVertical = NO;
-    
+    [self menuShow];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuShow) name:@"menuShow" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuHide) name:@"menuHide" object:nil];
+
     _viewsArray = [[NSArray alloc]initWithObjects:@"Forside",@"Dine Vakter",@"Oppslag",@"Personer",@"Penger",@"Innstillinger", nil];
     
     _imagesArray = [[NSArray alloc]initWithObjects:@"frontpage.png",@"vakter.png",@"oppslag.png",@"personer",@"penger.png",@"innstillinger.png",nil];
-    self.menuTableView.backgroundColor = [UIColor colorWithRed:244.0/255 green:244.0/255 blue:244.0/255 alpha:1.0];
-    self.menuTableView.frame = CGRectMake(0, HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
-    self.menuTableView.separatorColor = [UIColor grayColor];
-    self.menuTableView.separatorInset = UIEdgeInsetsMake(1, 0, 0, 1);
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition: UITableViewScrollPositionNone];
 
-    /* KODE FOR Å LAGE FOOTER TIL SLIDEOUTMENU; UTILIZE LATER;
-    UIControl *bottomView = [[UIControl alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-48, self.view.frame.size.width, 48)];
-    [bottomView addTarget:self action:@selector(footerPressed) forControlEvents:UIControlEventTouchUpInside];
-    bottomView.backgroundColor = [UIColor headerColor];
-    [self.view addSubview:bottomView];
-    */
     
 }
--(void)footerPressed{
+-(void)menuItemSelected:(id)sender{
+    
+    [self colorMenuIcon:sender isSelected:MenuItemHighlighted];
+    
 }
+
+-(void)menuItemNoLongerSelected:(id)sender{
+    
+    [self colorMenuIcon:sender isSelected:MenuItemNormal];
+}
+-(void)menuShow{
+    for (UIControl*control in self.view.subviews) {
+        [control removeFromSuperview];
+    }
+    
+    self.allControls = [[NSMutableArray alloc]init];
+    
+    for (int i = 0; i < self.viewsArray.count; i++) {
+        
+        int p = 70;
+        if (self.view.frame.size.height == 480) {
+            p = 40;
+        }
+        UIControl *menuItem = [[UIControl alloc]initWithFrame:CGRectMake(40, i*75+p, 200, 55)];
+        [menuItem addTarget:self action:@selector(menuItemPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [menuItem addTarget:self action:@selector(menuItemSelected:) forControlEvents:UIControlEventTouchDown];
+        [menuItem addTarget:self action:@selector(menuItemNoLongerSelected:) forControlEvents:UIControlEventTouchDragOutside];
+        
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(80,15, 70, 20)];
+        label.text = [self.viewsArray objectAtIndex:i];
+        label.textColor = [UIColor whiteColor];
+        
+        
+        label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20];
+        [label sizeToFit];
+        [menuItem addSubview:label];
+        
+        [self.view addSubview:menuItem];
+        if ((int)[ABTData sharedData].currentIndex == i) {
+            label.textColor = label.textColor = [UIColor whiteColor];
+            [self colorMenuIcon:menuItem isSelected:MenuItemSelected];
+            
+        }
+        [self.allControls addObject:menuItem];
+        
+        
+        
+        
+        
+    }
+    /*
+    float animtime =0;
+    for (UIControl*view in self.allControls) {
+        
+        [UIView animateWithDuration:0.45f delay:animtime usingSpringWithDamping:0.8f initialSpringVelocity:1.3f options:kNilOptions animations:^(void){
+            view.frame = CGRectMake(20, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+        } completion:^(BOOL finished){ }];
+        animtime +=0.075;
+    }*/
+    
+    double delayInSeconds = 0.175f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+
+        [self hideTopBar];});
+}
+
+-(void)hideTopBar{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    NSLog(@"Hide");
+}
+-(void)showTopBar{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    NSLog(@"Show");
+}
+
+-(void)menuHide{
+    for (id control in self.allControls) {
+        
+        [control removeFromSuperview];
+        
+    }
+    double delayInSeconds = 0.15f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self showTopBar];
+    });
+    }
+
+-(void)menuItemPressed:(id)sender{
+    NSString *correctName;
+    [self colorMenuIcon:sender isSelected:MenuItemSelected];
+    
+    for (UIControl*control in self.allControls) {
+        
+        BOOL correct = NO;
+        if (control == sender) {
+            correct = YES;
+            [ABTData sharedData].currentIndex = (NSInteger*)[self.allControls indexOfObject:control];
+        }
+        for (UILabel*label in control.subviews) {
+            if ([label isKindOfClass:[UILabel class]]) {
+                if (correct) {
+                    correctName = label.text;
+                }
+                else {label.textColor = [UIColor whiteColor];
+                    [self colorMenuIcon:control isSelected:MenuItemNormal];
+                }
+                
+            }
+            
+        }
+        
+    }
+    for (UIControl*view in self.allControls) {
+        
+        [UIView animateWithDuration:0.15f delay:0 usingSpringWithDamping:0.65f initialSpringVelocity:1.7f options:kNilOptions animations:^(void){
+            view.frame = CGRectMake(-200, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+        } completion:^(BOOL finished){if(!finished){} }];
+    }
+    
+    double delayInSeconds = 0.15f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self switchToViewController:correctName];
+    });
+    
+    
+}
+
+-(void)switchToViewController:(NSString*)viewController{
+    self.sidePanelController.navigationItem.title = viewController;
+    
+    UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(showLeftPanelAnimated:)];
+    flipButton = [self.sidePanelController leftButtonForCenterPanel];
+    self.sidePanelController.navigationItem.leftBarButtonItem = flipButton;
+    
+    
+    [self.sidePanelController setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:viewController]];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark - Table View Delegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+-(void)colorMenuIcon:(id)sender isSelected:(MenuItemState)state{
+    UIControl *control = (UIControl*)sender;
+    UILabel *label = [control.subviews objectAtIndex:0];
     
-    return _viewsArray.count;
-}
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"ABTMenuCell";
-    
-    ABTMenuCell *cell = (ABTMenuCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil)
-    {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ABTMenuCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
+    switch (state) {
+            
+        case MenuItemNormal:
+            label.textColor = [UIColor whiteColor];
+            control.backgroundColor = [UIColor clearColor];
+            break;
+        case MenuItemHighlighted:
+            label.textColor = [UIColor whiteColor];
+            control.backgroundColor = [UIColor lightGrayColor];
+            break;
+        case MenuItemSelected:
+            label.textColor = [UIColor whiteColor];
+            control.backgroundColor = [UIColor lightGrayColor];
+            break;
+        default:
+            break;
+    }
+    /*NSString *lblString;
+    for (UILabel*lbl in control.subviews) {
+        if ([lbl isKindOfClass:[UILabel class]]) {
+            lbl.textColor = menuColor;
+            lblString = lbl.text;
+        }
+        
     }
     
-    cell.menuLabel.text = [_viewsArray objectAtIndex:indexPath.row];
-    cell.menuIconImage.image = [UIImage imageNamed:[_imagesArray objectAtIndex:indexPath.row]];
+    if ([lblString isEqualToString:@"Convert"]) {
+        newImage = [UIImage convertIcon:menuColor];
+    }
+    else if ([lblString isEqualToString:@"Density"]){
+        newImage = [UIImage densityIcon:menuColor];
+    }
+    else if ([lblString isEqualToString:@"Vessels"]){
+        newImage = [UIImage vesselsIcon:menuColor];
+    }
+    else if ([lblString isEqualToString:@"Info"]){
+        newImage = [UIImage infoIcon:menuColor];
+    }
+    imageViewFromControl.image = newImage;*/
     
-    return cell;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-[self.sidePanelController setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:[_viewsArray objectAtIndex:indexPath.row]]];
+    
 }
 
 @end

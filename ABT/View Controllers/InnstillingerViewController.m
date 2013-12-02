@@ -26,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self makeTopBar];
 	// Do any additional setup after loading the view.
 }
 
@@ -35,27 +34,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)makeTopBar{
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
-    headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"Innstillinger";
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.frame = CGRectMake(0, 0, self.view.bounds.size.width, HEADER_HEIGHT);
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE];
-    [headerView addSubview:titleLabel];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(menuButtonPressed)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    button.frame = CGRectMake(5.0, 5.0, 40.0, 40.0);
-    
-    [headerView addSubview:button];
-    [self.view addSubview:headerView];
-}
-- (void)menuButtonPressed{
-    [self.sidePanelController showLeftPanelAnimated:YES];
-}
+
 @end

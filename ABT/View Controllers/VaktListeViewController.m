@@ -41,58 +41,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self makeTopBar];
     self.calendarView = [[MNCalendarView alloc]initWithFrame:CGRectMake(0, 48, 320, 305)];
     self.calendarView.selectedDate = [NSDate date];
     self.calendarView.delegate = self;
     
     [self.view addSubview:self.calendarView];
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [ABTData sharedData].VaktListeView = self;
-    });
-}
--(void)makeTopBar{
-    self.detailView = [[MJDetailViewController alloc]init];
     
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,HEADER_HEIGHT)];
-    headerView.backgroundColor = [UIColor colorWithRed:43.0/255 green:45.0/255 blue:48.0/255 alpha:1];
-    
-    
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"Vaktliste";
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.frame = CGRectMake(0, 0, self.view.bounds.size.width, HEADER_HEIGHT);
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    titleLabel.font = [UIFont fontWithName:THIN size:HEADER_FONT_SIZE];
-    [headerView addSubview:titleLabel];
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(menuButtonPressed)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    button.frame = CGRectMake(5.0, 5.0, 40.0, 40.0);
-    
-    [headerView addSubview:button];
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [infoButton addTarget:self
-                   action:@selector(infoPressed)
-         forControlEvents:UIControlEventTouchUpInside];
-    [infoButton setImage:[UIImage imageNamed:@"infoIcon.png"] forState:UIControlStateNormal];
-    infoButton.frame = CGRectMake(270.0, 5.0, 45.0, 40.0);
-    [headerView addSubview:infoButton];
-    [self.view addSubview:headerView];
 }
 
 
--(void)infoPressed{
-    [self presentPopupViewController:self.detailView animationType:MJPopupViewAnimationFade];
-}
--(void)menuButtonPressed{
-    [self.sidePanelController showLeftPanelAnimated:YES];
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

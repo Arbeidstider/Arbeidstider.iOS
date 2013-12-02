@@ -14,8 +14,6 @@
 
 @interface ABTData : NSObject
 
-@property (strong,readwrite) VaktListeViewController*VaktListeView;
-@property (strong,readwrite) PersonViewController *PersonView;
 
 @property (strong,readwrite) NSMutableArray *shifts;
 
@@ -23,6 +21,7 @@
 @property (strong,readwrite) NSArray *workDates;
 @property (readwrite,retain) NSDate *currentDate;
 @property (readwrite,retain) ABTPerson *currentPerson;
+@property (readwrite) NSInteger *currentIndex;
 
 +(ABTData*)sharedData;
 

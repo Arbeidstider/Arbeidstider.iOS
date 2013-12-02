@@ -21,7 +21,7 @@
 #import "UIViewController+JASidePanel.h"
 
 #endif
-#define HEADER_HEIGHT 48
+#define HEADER_HEIGHT 66
 #define HEADER_FONT_SIZE 30
 #define THIN @"HelveticaNeue-Thin"
 #define LIGHT @"HelveticaNeue-Light"

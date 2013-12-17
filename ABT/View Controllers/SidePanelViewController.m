@@ -62,7 +62,7 @@
     flipButton = [self leftButtonForCenterPanel];
     self.navigationItem.leftBarButtonItem = flipButton;
     
-    self.navigationItem.title = @"Arbeidstider";
+    self.navigationItem.title = @"Forside";
 
 }
 

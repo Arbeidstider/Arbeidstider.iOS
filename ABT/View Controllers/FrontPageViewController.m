@@ -7,7 +7,7 @@
 
 #import "FrontPageViewController.h"
 #import "ABTData.h"
-
+#import "TimeLineView.h"
 @interface FrontPageViewController () <MZDayPickerDelegate,MZDayPickerDataSource,UIScrollViewDelegate>
 
 
@@ -34,20 +34,24 @@
 -(void)viewWillLayoutSubviews{
     screen = self.view.bounds.size;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.timeLineScrollView.frame = CGRectMake(0, 65, 320, 500);
-    [self.view addSubview:self.timeLineScrollView];
+    self.timeLineScrollView = [[UIScrollView alloc]init];
+    self.timeLineScrollView.frame = CGRectMake(0, 130, 320, 438);
     self.timeLineScrollView.delegate = self;
-    self.timeLineScrollView.contentSize=CGSizeMake((self.timeLineScrollView.zoomScale*13)*24, self.timeLineScrollView.bounds.size.height);
-    self.timeLineScrollView.contentSize = CGSizeMake(10000,10000);
-    [self.timeLineScrollView addSubview:[[UIView alloc]initWithFrame:CGRectMake(0, 0, 2000, 2000)]];
+    
+    self.timeLineScrollView.contentSize = CGSizeMake(10000,self.timeLineScrollView.frame.size.height);
+    self.timeLineScrollView.showsVerticalScrollIndicator = NO;
+    self.timeLineScrollView.bounces = NO;
+    
+    
     self.timeLineScrollView.minimumZoomScale=1.0;
     self.timeLineScrollView.maximumZoomScale=10.0;
-    self.timeLineScrollView.zoomScale = 5.0;
-    self.timeLineScrollView.backgroundColor = [UIColor redColor];
+    self.timeLineScrollView.zoomScale = 1.0;
+    [self.timeLineScrollView addSubview:[TimeLineView sharedDrawView]];
+    [self.view addSubview:self.timeLineScrollView];
     
     
     // MZDAYPICKER SETUP
@@ -61,40 +65,30 @@
     [self.dayPicker setStartDate:[NSDate dateFromDay:1 month:9 year:2013] endDate:[NSDate dateFromDay:31 month:12 year:2013]];
     [self.dayPicker setCurrentDate:[NSDate date] animated:YES];
    
-    
     //Bra, stabil thirdpartyløsning
     self.params = [[NSMutableDictionary alloc]init];
-    [self.params setObject:@"7" forKey:@"employeeID"];
-    [self.params setObject:@"2013-09-13" forKey:@"startDate"];
-    [self.params setObject:@"2013-09-30" forKey:@"endDate"];
+    [self.params setObject:@"62560772-CFD8-4DDB-8CE3-3F37638C4327" forKey:@"UserID"];
+    [self.params setObject:@"2013,9,1" forKey:@"StartDate"];
+    [self.params setObject:@"2013,12,31" forKey:@"EndDate"];
 
-    AFFNRequest *request = [AFFNRequest requestWithConnectionType:kAFFNGet andURL:@"http://services.arbeidstider.no/TimeSheetService/GetAllTimeSheets" andParams:_params withCompletion:^(AFFNCallbackObject *result){
+    AFFNRequest *request = [AFFNRequest requestWithConnectionType:kAFFNGet andURL:@"http://services.arbeidstider.no/timesheets" andParams:_params withCompletion:^(AFFNCallbackObject *result){
         //Callback block for completion
         
         NSError *error = nil;
-        //NSLog(@"Resultdata %@",result.data);
-        NSJSONSerialization *response = [NSJSONSerialization JSONObjectWithData:result.data options:NSJSONReadingAllowFragments error:&error];
         NSMutableArray *JSONArray = [NSJSONSerialization JSONObjectWithData:result.data options:kNilOptions error:&error];//her er json lagra
         [ABTData sharedData].shifts = JSONArray;
-        //NSLog(@"ABTData workdates = %@",[ABTData sharedData].shifts);
+        NSLog(@"ABTData workdates = %@",[ABTData sharedData].shifts);
         
-        for (NSDictionary *object in JSONArray) {
-            NSString *string = [object objectForKey:@"ShiftEnd"];
-            NSLog(@"%@",string);
-        }
-        
-        if(error)
-            //NSLog(@"Error: %@",error);
+        if(error)NSLog(@"Error: %@",error);
         
         //Data comes back as NSData so it's up to you to parse the response into whatever object type you need
-        NSLog(@"Response: %@",response);
     } andFailure:^(NSError *error){
         //Callback block for failure
         NSLog(@"Error: %@",error);
         
     }];
-    request = nil;
-    //[[AFFNManager sharedManager] addNetworkOperation:request];
+    
+    [[AFFNManager sharedManager] addNetworkOperation:request];
 }
 -(NSString*)convertDateToName:(NSDate*)date{
     
@@ -131,31 +125,22 @@
 #pragma mark - ScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    return [[UIView alloc]initWithFrame:CGRectMake(0, 0, 1000, 1000)];
+        return [TimeLineView sharedDrawView];
 }
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view{
     NSLog(@"began zooming");
 }
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
     NSLog(@"End:Scale %f",scale);
+   
 }
-- (CGRect)zoomRectForScrollView:(UIScrollView *)scrollView withScale:(float)scale withCenter:(CGPoint)center {
-    CGRect zoomRect;
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView{
+    NSLog(@"didzoom %f",scrollView.zoomScale);
+    [TimeLineView sharedDrawView].zoomScale = scrollView.zoomScale;
     
-    // The zoom rect is in the content view's coordinates.
-    // At a zoom scale of 1.0, it would be the size of the
-    // imageScrollView's bounds.
-    // As the zoom scale decreases, so more content is visible,
-    // the size of the rect grows.
-    zoomRect.size.height = scrollView.frame.size.height / scale;
-    zoomRect.size.width  = scrollView.frame.size.width  / scale;
-    
-    // choose an origin so as to get the right center.
-    zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
-    zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
-    return zoomRect;
+   
+}
 
-}
 #pragma mark - Daypickerdelegate
 - (void)dayPicker:(MZDayPicker *)dayPicker willSelectDay:(MZDay *)day
 {

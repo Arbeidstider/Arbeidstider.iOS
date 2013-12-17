@@ -26,6 +26,7 @@
 		08136FF318110E8800B6F4CF /* CalendarActionsheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 08136FF218110E8800B6F4CF /* CalendarActionsheet.m */; };
 		08136FF518110E9A00B6F4CF /* CalendarActionsheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08136FF418110E9A00B6F4CF /* CalendarActionsheet.xib */; };
 		081370001811491900B6F4CF /* SelectedCellFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 08136FFF1811491900B6F4CF /* SelectedCellFrame.png */; };
+		082189B0184DC1AE006B90E0 /* TimeLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 082189AF184DC1AE006B90E0 /* TimeLineView.m */; };
 		08252E55180D5E14000AD875 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08252E53180D5E14000AD875 /* ProfileViewController.m */; };
 		08252E56180D5E14000AD875 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08252E54180D5E14000AD875 /* ProfileViewController.xib */; };
 		08252E5A180D618C000AD875 /* DayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08252E58180D618C000AD875 /* DayDetailViewController.m */; };
@@ -138,6 +139,8 @@
 		08136FF218110E8800B6F4CF /* CalendarActionsheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarActionsheet.m; sourceTree = "<group>"; };
 		08136FF418110E9A00B6F4CF /* CalendarActionsheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarActionsheet.xib; sourceTree = "<group>"; };
 		08136FFF1811491900B6F4CF /* SelectedCellFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectedCellFrame.png; sourceTree = "<group>"; };
+		082189AE184DC1AE006B90E0 /* TimeLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineView.h; sourceTree = "<group>"; };
+		082189AF184DC1AE006B90E0 /* TimeLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineView.m; sourceTree = "<group>"; };
 		08252E52180D5E14000AD875 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		08252E53180D5E14000AD875 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		08252E54180D5E14000AD875 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -347,6 +350,8 @@
 			children = (
 				086B555E17F0AA2100D9CC67 /* FrontPageViewController.h */,
 				086B555F17F0AA2100D9CC67 /* FrontPageViewController.m */,
+				082189AE184DC1AE006B90E0 /* TimeLineView.h */,
+				082189AF184DC1AE006B90E0 /* TimeLineView.m */,
 			);
 			name = "Front Page";
 			sourceTree = "<group>";
@@ -846,6 +851,7 @@
 				0807A05B184CD350005F3A49 /* JASidePanelController.m in Sources */,
 				086B55DC17F0AA2100D9CC67 /* MNFastDateEnumeration.m in Sources */,
 				086B55C617F0AA2100D9CC67 /* SidePanelViewController.m in Sources */,
+				082189B0184DC1AE006B90E0 /* TimeLineView.m in Sources */,
 				086B55C417F0AA2100D9CC67 /* OppslagViewController.m in Sources */,
 				086B55CA17F0AA2100D9CC67 /* UIImageView+AFFNImage.m in Sources */,
 				086B55CC17F0AA2100D9CC67 /* AFFNRequest.m in Sources */,

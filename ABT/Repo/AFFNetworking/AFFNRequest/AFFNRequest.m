@@ -272,7 +272,7 @@ static NSString *__AFFNKeyFinished = @"isFinished";
     for (id key in _params) {
         [paramsString appendFormat:@"%@=%@&",key,[_params objectForKey:key]];
     }
-
+    NSLog(@"%@",paramsString);
     finalURL = [[NSURL alloc] initWithString:paramsString];
     [paramsString release];
     paramsString = nil;

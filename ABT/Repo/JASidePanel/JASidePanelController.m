@@ -250,7 +250,6 @@ static char ja_kvoContext;
                 self.leftPanelContainer.userInteractionEnabled = NO;
                 self.rightPanelContainer.userInteractionEnabled = NO;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"menuHide" object:self];
-                NSLog(@"_menuHide setstate");
                 
                 break;
 			}
@@ -258,7 +257,6 @@ static char ja_kvoContext;
                 self.visiblePanel = self.leftPanel;
                 self.leftPanelContainer.userInteractionEnabled = YES;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"menuShow" object:self];
-                NSLog(@"Menushow setstate");
 
                 break;
 			}
@@ -563,7 +561,7 @@ static char ja_kvoContext;
     switch (self.state) {
         case JASidePanelCenterVisible: {
             [self _showCenterPanel:YES bounce:NO];
-            NSLog(@"_undoPan");
+
             [[NSNotificationCenter defaultCenter] postNotificationName:@"menuShowCanceled" object:self];
             break;
 		}

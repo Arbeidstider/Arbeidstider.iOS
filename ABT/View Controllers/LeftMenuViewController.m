@@ -118,12 +118,10 @@
 -(void)hideTopBar{
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    NSLog(@"Hide");
 }
 -(void)showTopBar{
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    NSLog(@"Show");
 }
 
 -(void)menuHide{

@@ -11,7 +11,6 @@
 #import "VaktListeViewController.h"
 #import "PersonViewController.h"
 #import "ABTPerson.h"
-
 @interface ABTData : NSObject
 
 
@@ -24,5 +23,4 @@
 @property (readwrite) NSInteger *currentIndex;
 
 +(ABTData*)sharedData;
-
 @end

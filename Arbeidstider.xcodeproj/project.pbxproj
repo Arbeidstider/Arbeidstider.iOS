@@ -54,7 +54,7 @@
 		086B554917F0960A00D9CC67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B552517F0960900D9CC67 /* Foundation.framework */; };
 		086B554A17F0960A00D9CC67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B552917F0960900D9CC67 /* UIKit.framework */; };
 		086B555217F0960A00D9CC67 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086B555017F0960A00D9CC67 /* InfoPlist.strings */; };
-		086B555417F0960A00D9CC67 /* ABTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B555317F0960A00D9CC67 /* ABTTests.m */; };
+		086B555417F0960A00D9CC67 /* ABTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B555317F0960A00D9CC67 /* ABTTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		086B55C017F0AA2100D9CC67 /* FrontPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B555F17F0AA2100D9CC67 /* FrontPageViewController.m */; };
 		086B55C117F0AA2100D9CC67 /* InnstillingerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B556117F0AA2100D9CC67 /* InnstillingerViewController.m */; };
 		086B55C317F0AA2100D9CC67 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B556517F0AA2100D9CC67 /* LeftMenuViewController.m */; };
@@ -102,6 +102,13 @@
 		086B55F417F0AB4100D9CC67 /* ABTData.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B55F317F0AB4100D9CC67 /* ABTData.m */; };
 		086B55F617F0AB7C00D9CC67 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086B55F517F0AB7C00D9CC67 /* QuartzCore.framework */; };
 		086C74F61808077900373601 /* UIColor+ABTColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 086C74F51808077900373601 /* UIColor+ABTColors.m */; };
+		086FF40518623284001105F2 /* AFFNCallbackObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B557317F0AA2100D9CC67 /* AFFNCallbackObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		086FF40618623284001105F2 /* AFFNImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B557617F0AA2100D9CC67 /* AFFNImageManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		086FF40718623284001105F2 /* UIImageView+AFFNImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B557817F0AA2100D9CC67 /* UIImageView+AFFNImage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		086FF40818623284001105F2 /* AFFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B557B17F0AA2100D9CC67 /* AFFNManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		086FF40918623284001105F2 /* AFFNRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B557E17F0AA2100D9CC67 /* AFFNRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		086FF40A18623284001105F2 /* AFFNStreamingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 086B558017F0AA2100D9CC67 /* AFFNStreamingRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		086FF40B186232A5001105F2 /* ABTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 084AA97917FD85DD00FD3B5A /* ABTPerson.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		08C769E21826A8C000721378 /* OppslagContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C769E11826A8C000721378 /* OppslagContentCell.xib */; };
 		08EF40D5182138BD002A06D8 /* OppslagContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EF40D4182138BD002A06D8 /* OppslagContentCell.m */; };
 /* End PBXBuildFile section */
@@ -898,7 +905,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				086FF40A18623284001105F2 /* AFFNStreamingRequest.m in Sources */,
+				086FF40918623284001105F2 /* AFFNRequest.m in Sources */,
+				086FF40818623284001105F2 /* AFFNManager.m in Sources */,
+				086FF40518623284001105F2 /* AFFNCallbackObject.m in Sources */,
+				086FF40B186232A5001105F2 /* ABTPerson.m in Sources */,
 				086B555417F0960A00D9CC67 /* ABTTests.m in Sources */,
+				086FF40618623284001105F2 /* AFFNImageManager.m in Sources */,
+				086FF40718623284001105F2 /* UIImageView+AFFNImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1054,14 +1068,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ABT.app/ABT";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Arbeidstider.app/Arbeidstider";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ABT/ABT-Prefix.pch";
+				GCC_PREFIX_HEADER = "ABT/Arbeidstider-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1077,14 +1091,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ABT.app/ABT";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Arbeidstider.app/Arbeidstider";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ABT/ABT-Prefix.pch";
+				GCC_PREFIX_HEADER = "ABT/Arbeidstider-Prefix.pch";
 				INFOPLIST_FILE = "ABTTests/ArbeidstiderTests-Info.plist";
 				PRODUCT_NAME = ArbeidstiderTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";

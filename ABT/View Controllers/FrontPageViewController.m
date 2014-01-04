@@ -16,6 +16,8 @@
 @property (strong,nonatomic) NSMutableDictionary *params;
 @property (strong) UIScrollView *timeLineScrollView;
 @property CGSize screen;
+@property TimeLineView *timeLineView;
+
 @end
 
 @implementation FrontPageViewController
@@ -38,11 +40,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.timeLineView = [[TimeLineView alloc]initWithFrame:CGRectMake(0, 0, 2400, 438)];
     self.timeLineScrollView = [[UIScrollView alloc]init];
     self.timeLineScrollView.frame = CGRectMake(0, 130, 320, 438);
     self.timeLineScrollView.delegate = self;
     
-    self.timeLineScrollView.contentSize = CGSizeMake(10000,self.timeLineScrollView.frame.size.height);
+    self.timeLineScrollView.contentSize = CGSizeMake(2400,self.timeLineScrollView.frame.size.height);
     self.timeLineScrollView.showsVerticalScrollIndicator = NO;
     self.timeLineScrollView.bounces = NO;
     
@@ -50,7 +53,7 @@
     self.timeLineScrollView.minimumZoomScale=1.0;
     self.timeLineScrollView.maximumZoomScale=10.0;
     self.timeLineScrollView.zoomScale = 1.0;
-    [self.timeLineScrollView addSubview:[TimeLineView sharedDrawView]];
+    [self.timeLineScrollView addSubview:self.timeLineView];
     [self.view addSubview:self.timeLineScrollView];
     
     
@@ -62,7 +65,7 @@
     self.dayPicker.year = 2013;
     self.dayPicker.dayNameLabelFontSize = 12.0f;
     self.dayPicker.dayLabelFontSize = 18.0f;    
-    [self.dayPicker setStartDate:[NSDate dateFromDay:1 month:9 year:2013] endDate:[NSDate dateFromDay:31 month:12 year:2013]];
+    [self.dayPicker setStartDate:[NSDate dateFromDay:1 month:9 year:2011] endDate:[NSDate dateFromDay:31 month:12 year:2015]];
     [self.dayPicker setCurrentDate:[NSDate date] animated:YES];
    
     //Bra, stabil thirdpartyløsning
@@ -87,8 +90,8 @@
         NSLog(@"Error: %@",error);
         
     }];
-    
-    [[AFFNManager sharedManager] addNetworkOperation:request];
+    request = nil;
+    //[[AFFNManager sharedManager] addNetworkOperation:request];
 }
 -(NSString*)convertDateToName:(NSDate*)date{
     
@@ -125,20 +128,28 @@
 #pragma mark - ScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-        return [TimeLineView sharedDrawView];
+    return self.timeLineView;
 }
+
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view{
     NSLog(@"began zooming");
 }
+
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
-    NSLog(@"End:Scale %f",scale);
-   
-}
--(void)scrollViewDidZoom:(UIScrollView *)scrollView{
-    NSLog(@"didzoom %f",scrollView.zoomScale);
-    [TimeLineView sharedDrawView].zoomScale = scrollView.zoomScale;
+    scrollView.transform = CGAffineTransformIdentity;
+    [self redrawContentInTimeLine:scale];
+    
+    [view setContentScaleFactor:scale];
     
    
+}
+
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView{
+    NSLog(@"didzoom %f",scrollView.zoomScale);
+}
+
+-(void)redrawContentInTimeLine:(float)scale{
+    
 }
 
 #pragma mark - Daypickerdelegate
@@ -149,6 +160,7 @@
 
 - (void)dayPicker:(MZDayPicker *)dayPicker didSelectDay:(MZDay *)day
 {
+    NSLog(@"%@",[self convertDateToName:day.date]);
     ////////////////
 }
 

@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TimeLineView : UIView
-+(TimeLineView *)sharedDrawView;
-@property (nonatomic) double zoomScale;
--(void)redrawContentWithScale:(float)scale;
+@property NSArray *data;
 @end
